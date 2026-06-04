@@ -96,8 +96,19 @@ def calculate_lead_score(df):
 
 def process_gold(spark: SparkSession):
     """Read Silver data and produce Gold lead scores."""
-
-    silver_df = spark.read.parquet("./data/silver/leads")
+    
+    try:
+        silver_df = spark.read.parquet("./data/silver/leads")
+        
+        if silver_df.count() == 0:
+            print("WARNING: No silver data to score. Run silver_processing first.")
+            return
+            
+    except Exception as e:
+        print(f"ERROR: Silver data not found - {str(e)}")
+        print("Please run silver_processing layer first to generate silver data.")
+        return
+    
     gold_df = calculate_lead_score(silver_df)
 
     # Write Gold output
@@ -111,6 +122,7 @@ def process_gold(spark: SparkSession):
             "company_name",
             "industry",
             "seniority",
+            "employee_count",
             "lead_score",
             "seniority_score",
             "company_size_score",

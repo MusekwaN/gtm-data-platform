@@ -44,7 +44,7 @@ def create_spark_session() -> SparkSession:
         .config("spark.hadoop.io.native.lib.available", "false")
         .config("spark.hadoop.home.dir", hadoop_home)
         .config("spark.driver.extraJavaOptions", f"-Dhadoop.home.dir={hadoop_home} -Dfile.encoding=UTF-8")
-        .config("spark.jars.packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.4")
+        .config("spark.jars.packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0")
         .config("spark.sql.streaming.checkpointLocation", "./checkpoints/bronze")
         .getOrCreate()
     )

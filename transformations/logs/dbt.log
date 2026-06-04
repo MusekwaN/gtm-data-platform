@@ -1,0 +1,818 @@
+[0m20:45:49.427205 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002644837C6E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000264447BB4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002644A017B10>]}
+
+
+============================== 20:45:49.432951 | b3be347a-7192-4711-9d00-6b5a8ba94def ==============================
+[0m20:45:49.432951 [info ] [MainThread]: Running with dbt=1.11.11
+[0m20:45:49.433969 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\Student\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt debug', 'indirect_selection': 'eager', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m20:45:49.516647 [info ] [MainThread]: dbt version: 1.11.11
+[0m20:45:49.517384 [info ] [MainThread]: python version: 3.13.13
+[0m20:45:49.518147 [info ] [MainThread]: python path: C:\Users\Student\gtm-data-platform\.venv\Scripts\python.exe
+[0m20:45:49.519004 [info ] [MainThread]: os info: Windows-11-10.0.22631-SP0
+[0m20:45:51.273117 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m20:45:51.273682 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m20:45:51.274095 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m20:45:51.669990 [info ] [MainThread]: Using profiles dir at C:\Users\Student\.dbt
+[0m20:45:51.670861 [info ] [MainThread]: Using profiles.yml file at C:\Users\Student\.dbt\profiles.yml
+[0m20:45:51.671946 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\Student\gtm-data-platform\transformations\dbt_project.yml
+[0m20:45:51.685073 [info ] [MainThread]: adapter type: snowflake
+[0m20:45:51.685833 [info ] [MainThread]: adapter version: 1.11.5
+[0m20:45:51.686541 [info ] [MainThread]: Configuration:
+[0m20:45:51.687179 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m20:45:51.687819 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m20:45:51.688427 [info ] [MainThread]: Required dependencies:
+[0m20:45:51.689233 [debug] [MainThread]: Executing "git --help"
+[0m20:45:51.749350 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   history    EXPERIMENTAL: Rewrite history\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m20:45:51.750545 [debug] [MainThread]: STDERR: "b''"
+[0m20:45:51.751323 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m20:45:51.752332 [info ] [MainThread]: Connection:
+[0m20:45:51.753291 [info ] [MainThread]:   account: BZPMUJQ-AG56460
+[0m20:45:51.755097 [info ] [MainThread]:   user: BLACKACE
+[0m20:45:51.757444 [info ] [MainThread]:   database: GTM_DB
+[0m20:45:51.758583 [info ] [MainThread]:   warehouse: GTM_WH
+[0m20:45:51.759728 [info ] [MainThread]:   role: SYSADMIN
+[0m20:45:51.760895 [info ] [MainThread]:   schema: SILVER
+[0m20:45:51.761639 [info ] [MainThread]:   authenticator: None
+[0m20:45:51.762376 [info ] [MainThread]:   oauth_client_id: None
+[0m20:45:51.763037 [info ] [MainThread]:   query_tag: None
+[0m20:45:51.763660 [info ] [MainThread]:   client_session_keep_alive: False
+[0m20:45:51.764297 [info ] [MainThread]:   host: None
+[0m20:45:51.764907 [info ] [MainThread]:   port: None
+[0m20:45:51.765515 [info ] [MainThread]:   proxy_host: None
+[0m20:45:51.766122 [info ] [MainThread]:   proxy_port: None
+[0m20:45:51.766738 [info ] [MainThread]:   protocol: None
+[0m20:45:51.767507 [info ] [MainThread]:   connect_retries: 1
+[0m20:45:51.768125 [info ] [MainThread]:   connect_timeout: None
+[0m20:45:51.768784 [info ] [MainThread]:   retry_on_database_errors: False
+[0m20:45:51.769534 [info ] [MainThread]:   retry_all: False
+[0m20:45:51.770167 [info ] [MainThread]:   insecure_mode: False
+[0m20:45:51.770775 [info ] [MainThread]:   reuse_connections: True
+[0m20:45:51.771381 [info ] [MainThread]:   s3_stage_vpce_dns_name: None
+[0m20:45:51.771983 [info ] [MainThread]:   platform_detection_timeout_seconds: 0.0
+[0m20:45:51.773427 [info ] [MainThread]: Registered adapter: snowflake=1.11.5
+[0m20:45:52.813123 [debug] [MainThread]: Acquiring new snowflake connection 'debug'
+[0m20:45:53.277356 [debug] [MainThread]: Using snowflake connection "debug"
+[0m20:45:53.278106 [debug] [MainThread]: On debug: select 1 as id
+[0m20:45:53.278700 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m20:45:55.303946 [debug] [MainThread]: SQL status: SUCCESS 1 in 2.025 seconds
+[0m20:45:55.309593 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m20:45:55.312901 [info ] [MainThread]: [31m1 check failed:[0m
+[0m20:45:55.317241 [info ] [MainThread]: Project loading failed for the following reason:
+ project path <C:\Users\Student\gtm-data-platform\transformations\dbt_project.yml> not found
+
+[0m20:45:55.328346 [debug] [MainThread]: Command `dbt debug` failed at 20:45:55.327800 after 6.15 seconds
+[0m20:45:55.329664 [debug] [MainThread]: Connection 'debug' was left open.
+[0m20:45:55.330810 [debug] [MainThread]: On debug: Close
+[0m20:45:55.794368 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000264538AEB10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000264538DE330>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002645384FAC0>]}
+[0m20:45:55.798944 [debug] [MainThread]: Flushing usage events
+[0m20:45:57.920578 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m20:48:46.890763 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020806A7C6E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020802EBB4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020808517B10>]}
+
+
+============================== 20:48:46.896574 | 5b98e9f3-12d4-4bd8-a433-f190c611c266 ==============================
+[0m20:48:46.896574 [info ] [MainThread]: Running with dbt=1.11.11
+[0m20:48:46.897865 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Student\\.dbt', 'use_colors': 'True', 'invocation_command': 'dbt debug', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\Student\\gtm-data-platform\\transformations\\logs'}
+[0m20:48:46.930442 [info ] [MainThread]: dbt version: 1.11.11
+[0m20:48:46.931259 [info ] [MainThread]: python version: 3.13.13
+[0m20:48:46.932121 [info ] [MainThread]: python path: C:\Users\Student\gtm-data-platform\.venv\Scripts\python.exe
+[0m20:48:46.933089 [info ] [MainThread]: os info: Windows-11-10.0.22631-SP0
+[0m20:48:48.419628 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m20:48:48.420187 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m20:48:48.420604 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m20:48:48.534965 [info ] [MainThread]: Using profiles dir at C:\Users\Student\.dbt
+[0m20:48:48.535758 [info ] [MainThread]: Using profiles.yml file at C:\Users\Student\.dbt\profiles.yml
+[0m20:48:48.536507 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\Student\gtm-data-platform\transformations\dbt_project.yml
+[0m20:48:48.538853 [info ] [MainThread]: adapter type: snowflake
+[0m20:48:48.540346 [info ] [MainThread]: adapter version: 1.11.5
+[0m20:48:48.543252 [info ] [MainThread]: Configuration:
+[0m20:48:48.544105 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m20:48:48.544696 [info ] [MainThread]:   dbt_project.yml file [[31mERROR invalid[0m]
+[0m20:48:48.545261 [info ] [MainThread]: Required dependencies:
+[0m20:48:48.545889 [debug] [MainThread]: Executing "git --help"
+[0m20:48:48.601433 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   history    EXPERIMENTAL: Rewrite history\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m20:48:48.602039 [debug] [MainThread]: STDERR: "b''"
+[0m20:48:48.602429 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m20:48:48.603071 [info ] [MainThread]: Connection:
+[0m20:48:48.603888 [info ] [MainThread]:   account: BZPMUJQ-AG56460
+[0m20:48:48.604631 [info ] [MainThread]:   user: BLACKACE
+[0m20:48:48.605858 [info ] [MainThread]:   database: GTM_DB
+[0m20:48:48.606625 [info ] [MainThread]:   warehouse: GTM_WH
+[0m20:48:48.607593 [info ] [MainThread]:   role: SYSADMIN
+[0m20:48:48.608590 [info ] [MainThread]:   schema: SILVER
+[0m20:48:48.609174 [info ] [MainThread]:   authenticator: None
+[0m20:48:48.609741 [info ] [MainThread]:   oauth_client_id: None
+[0m20:48:48.610306 [info ] [MainThread]:   query_tag: None
+[0m20:48:48.610878 [info ] [MainThread]:   client_session_keep_alive: False
+[0m20:48:48.611443 [info ] [MainThread]:   host: None
+[0m20:48:48.612004 [info ] [MainThread]:   port: None
+[0m20:48:48.612574 [info ] [MainThread]:   proxy_host: None
+[0m20:48:48.613142 [info ] [MainThread]:   proxy_port: None
+[0m20:48:48.613707 [info ] [MainThread]:   protocol: None
+[0m20:48:48.614474 [info ] [MainThread]:   connect_retries: 1
+[0m20:48:48.615536 [info ] [MainThread]:   connect_timeout: None
+[0m20:48:48.616589 [info ] [MainThread]:   retry_on_database_errors: False
+[0m20:48:48.617937 [info ] [MainThread]:   retry_all: False
+[0m20:48:48.618603 [info ] [MainThread]:   insecure_mode: False
+[0m20:48:48.619172 [info ] [MainThread]:   reuse_connections: True
+[0m20:48:48.619743 [info ] [MainThread]:   s3_stage_vpce_dns_name: None
+[0m20:48:48.620307 [info ] [MainThread]:   platform_detection_timeout_seconds: 0.0
+[0m20:48:48.621166 [info ] [MainThread]: Registered adapter: snowflake=1.11.5
+[0m20:48:49.364636 [debug] [MainThread]: Acquiring new snowflake connection 'debug'
+[0m20:48:49.455863 [debug] [MainThread]: Using snowflake connection "debug"
+[0m20:48:49.456325 [debug] [MainThread]: On debug: select 1 as id
+[0m20:48:49.456681 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m20:48:50.804694 [debug] [MainThread]: SQL status: SUCCESS 1 in 1.348 seconds
+[0m20:48:50.808838 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m20:48:50.814132 [info ] [MainThread]: [31m1 check failed:[0m
+[0m20:48:50.819350 [info ] [MainThread]: Project loading failed for the following reason:
+Runtime Error
+  Required "name" field not present in project
+
+Error encountered in C:\Users\Student\gtm-data-platform\transformations\dbt_project.yml
+
+
+[0m20:48:50.829579 [debug] [MainThread]: Command `dbt debug` failed at 20:48:50.829244 after 4.25 seconds
+[0m20:48:50.830357 [debug] [MainThread]: Connection 'debug' was left open.
+[0m20:48:50.831841 [debug] [MainThread]: On debug: Close
+[0m20:48:51.279528 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020811FAEB10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020811FDE330>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020811F4FAC0>]}
+[0m20:48:51.282272 [debug] [MainThread]: Flushing usage events
+[0m20:48:52.977306 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m20:58:22.377842 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002B36C97C6E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002B368BBB4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002B36E617B10>]}
+
+
+============================== 20:58:22.383676 | 7cd06930-82f4-4bc0-a615-19369b1a85cb ==============================
+[0m20:58:22.383676 [info ] [MainThread]: Running with dbt=1.11.11
+[0m20:58:22.384789 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\Student\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt debug', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\Student\\gtm-data-platform\\transformations\\logs'}
+[0m20:58:22.415358 [info ] [MainThread]: dbt version: 1.11.11
+[0m20:58:22.432077 [info ] [MainThread]: python version: 3.13.13
+[0m20:58:22.433074 [info ] [MainThread]: python path: C:\Users\Student\gtm-data-platform\.venv\Scripts\python.exe
+[0m20:58:22.433787 [info ] [MainThread]: os info: Windows-11-10.0.22631-SP0
+[0m20:58:23.604555 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m20:58:23.605113 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m20:58:23.605528 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m20:58:23.716105 [info ] [MainThread]: Using profiles dir at C:\Users\Student\.dbt
+[0m20:58:23.716968 [info ] [MainThread]: Using profiles.yml file at C:\Users\Student\.dbt\profiles.yml
+[0m20:58:23.717784 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\Student\gtm-data-platform\transformations\dbt_project.yml
+[0m20:58:23.719665 [info ] [MainThread]: adapter type: snowflake
+[0m20:58:23.720887 [info ] [MainThread]: adapter version: 1.11.5
+[0m20:58:23.932911 [info ] [MainThread]: Configuration:
+[0m20:58:23.934652 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m20:58:23.936545 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m20:58:23.938666 [info ] [MainThread]: Required dependencies:
+[0m20:58:23.940728 [debug] [MainThread]: Executing "git --help"
+[0m20:58:24.016688 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   history    EXPERIMENTAL: Rewrite history\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m20:58:24.017875 [debug] [MainThread]: STDERR: "b''"
+[0m20:58:24.018369 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m20:58:24.019080 [info ] [MainThread]: Connection:
+[0m20:58:24.019953 [info ] [MainThread]:   account: BZPMUJQ-AG56460
+[0m20:58:24.021873 [info ] [MainThread]:   user: BLACKACE
+[0m20:58:24.022946 [info ] [MainThread]:   database: GTM_DB
+[0m20:58:24.023473 [info ] [MainThread]:   warehouse: GTM_WH
+[0m20:58:24.023984 [info ] [MainThread]:   role: SYSADMIN
+[0m20:58:24.024638 [info ] [MainThread]:   schema: SILVER
+[0m20:58:24.025258 [info ] [MainThread]:   authenticator: None
+[0m20:58:24.025870 [info ] [MainThread]:   oauth_client_id: None
+[0m20:58:24.026471 [info ] [MainThread]:   query_tag: None
+[0m20:58:24.027068 [info ] [MainThread]:   client_session_keep_alive: False
+[0m20:58:24.027666 [info ] [MainThread]:   host: None
+[0m20:58:24.028234 [info ] [MainThread]:   port: None
+[0m20:58:24.028739 [info ] [MainThread]:   proxy_host: None
+[0m20:58:24.029378 [info ] [MainThread]:   proxy_port: None
+[0m20:58:24.029983 [info ] [MainThread]:   protocol: None
+[0m20:58:24.030656 [info ] [MainThread]:   connect_retries: 1
+[0m20:58:24.031256 [info ] [MainThread]:   connect_timeout: None
+[0m20:58:24.031966 [info ] [MainThread]:   retry_on_database_errors: False
+[0m20:58:24.032984 [info ] [MainThread]:   retry_all: False
+[0m20:58:24.033567 [info ] [MainThread]:   insecure_mode: False
+[0m20:58:24.034357 [info ] [MainThread]:   reuse_connections: True
+[0m20:58:24.034985 [info ] [MainThread]:   s3_stage_vpce_dns_name: None
+[0m20:58:24.035590 [info ] [MainThread]:   platform_detection_timeout_seconds: 0.0
+[0m20:58:24.036508 [info ] [MainThread]: Registered adapter: snowflake=1.11.5
+[0m20:58:24.721339 [debug] [MainThread]: Acquiring new snowflake connection 'debug'
+[0m20:58:24.811998 [debug] [MainThread]: Using snowflake connection "debug"
+[0m20:58:24.812641 [debug] [MainThread]: On debug: select 1 as id
+[0m20:58:24.813153 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m20:58:26.619472 [debug] [MainThread]: SQL status: SUCCESS 1 in 1.806 seconds
+[0m20:58:26.621454 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m20:58:26.622534 [info ] [MainThread]: [32mAll checks passed![0m
+[0m20:58:26.627156 [debug] [MainThread]: Command `dbt debug` succeeded at 20:58:26.626488 after 4.52 seconds
+[0m20:58:26.628345 [debug] [MainThread]: Connection 'debug' was left open.
+[0m20:58:26.629010 [debug] [MainThread]: On debug: Close
+[0m20:58:27.151727 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002B37894C3E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002B3784D8DD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002B36D8E2580>]}
+[0m20:58:27.154033 [debug] [MainThread]: Flushing usage events
+[0m20:58:28.958115 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:07:40.545053 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001981F77C6E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001982149BD90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001982149B9D0>]}
+
+
+============================== 21:07:40.550743 | 2ec17a81-59d0-4689-8475-bb59df2feba5 ==============================
+[0m21:07:40.550743 [info ] [MainThread]: Running with dbt=1.11.11
+[0m21:07:40.551822 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Student\\.dbt', 'invocation_command': 'dbt run', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\Student\\gtm-data-platform\\transformations\\logs'}
+[0m21:07:41.733015 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m21:07:41.733628 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m21:07:41.734200 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m21:07:42.222907 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '2ec17a81-59d0-4689-8475-bb59df2feba5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001981FB1E190>]}
+[0m21:07:42.365104 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '2ec17a81-59d0-4689-8475-bb59df2feba5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001981F5D09E0>]}
+[0m21:07:42.366975 [info ] [MainThread]: Registered adapter: snowflake=1.11.5
+[0m21:07:43.129335 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m21:07:43.130758 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m21:07:43.131576 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '2ec17a81-59d0-4689-8475-bb59df2feba5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001982AC4B550>]}
+[0m21:07:48.584224 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '2ec17a81-59d0-4689-8475-bb59df2feba5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001981F6E8500>]}
+[0m21:07:48.724715 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\Student\gtm-data-platform\transformations\target\manifest.json
+[0m21:07:48.736895 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\Student\gtm-data-platform\transformations\target\semantic_manifest.json
+[0m21:07:49.029450 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '2ec17a81-59d0-4689-8475-bb59df2feba5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001982C0144B0>]}
+[0m21:07:49.032533 [info ] [MainThread]: Found 3 models, 2 sources, 536 macros
+[0m21:07:49.034854 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2ec17a81-59d0-4689-8475-bb59df2feba5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001982B5F81F0>]}
+[0m21:07:49.045848 [info ] [MainThread]: 
+[0m21:07:49.047231 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m21:07:49.048807 [info ] [MainThread]: 
+[0m21:07:49.051407 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m21:07:49.064575 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_GTM_DB'
+[0m21:07:49.074511 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_GTM_DB'
+[0m21:07:49.108019 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_GTM_DB'
+[0m21:07:49.231534 [debug] [ThreadPool]: Using snowflake connection "list_GTM_DB"
+[0m21:07:49.232411 [debug] [ThreadPool]: Using snowflake connection "list_GTM_DB"
+[0m21:07:49.230969 [debug] [ThreadPool]: Using snowflake connection "list_GTM_DB"
+[0m21:07:49.233469 [debug] [ThreadPool]: On list_GTM_DB: show terse schemas in database GTM_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "connection_name": "list_GTM_DB"} */
+[0m21:07:49.233966 [debug] [ThreadPool]: On list_GTM_DB: show terse schemas in database GTM_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "connection_name": "list_GTM_DB"} */
+[0m21:07:49.234440 [debug] [ThreadPool]: On list_GTM_DB: show terse schemas in database GTM_DB
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "connection_name": "list_GTM_DB"} */
+[0m21:07:49.234989 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:07:49.235449 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:07:49.235921 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:07:51.549288 [debug] [ThreadPool]: SQL status: SUCCESS 3 in 2.314 seconds
+[0m21:07:51.571749 [debug] [ThreadPool]: SQL status: SUCCESS 3 in 2.336 seconds
+[0m21:07:51.646620 [debug] [ThreadPool]: SQL status: SUCCESS 3 in 2.410 seconds
+[0m21:07:51.658571 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_GTM_DB, now create_GTM_DB_SILVER_GOLD)
+[0m21:07:51.662730 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_GTM_DB, now create_GTM_DB_SILVER_SILVER)
+[0m21:07:51.665651 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_GTM_DB, now create_GTM_DB_SILVER_BRONZE)
+[0m21:07:51.669002 [debug] [ThreadPool]: Creating schema "database: "GTM_DB"
+schema: "SILVER_GOLD"
+"
+[0m21:07:51.671841 [debug] [ThreadPool]: Creating schema "database: "GTM_DB"
+schema: "SILVER_SILVER"
+"
+[0m21:07:51.674556 [debug] [ThreadPool]: Creating schema "database: "GTM_DB"
+schema: "SILVER_BRONZE"
+"
+[0m21:07:51.692822 [debug] [ThreadPool]: Using snowflake connection "create_GTM_DB_SILVER_GOLD"
+[0m21:07:51.700959 [debug] [ThreadPool]: Using snowflake connection "create_GTM_DB_SILVER_SILVER"
+[0m21:07:51.708476 [debug] [ThreadPool]: Using snowflake connection "create_GTM_DB_SILVER_BRONZE"
+[0m21:07:51.709804 [debug] [ThreadPool]: On create_GTM_DB_SILVER_GOLD: create schema if not exists GTM_DB.SILVER_GOLD
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "connection_name": "create_GTM_DB_SILVER_GOLD"} */
+[0m21:07:51.711320 [debug] [ThreadPool]: On create_GTM_DB_SILVER_SILVER: create schema if not exists GTM_DB.SILVER_SILVER
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "connection_name": "create_GTM_DB_SILVER_SILVER"} */
+[0m21:07:51.712597 [debug] [ThreadPool]: On create_GTM_DB_SILVER_BRONZE: create schema if not exists GTM_DB.SILVER_BRONZE
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "connection_name": "create_GTM_DB_SILVER_BRONZE"} */
+[0m21:07:52.050973 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.336 seconds
+[0m21:07:52.062765 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.348 seconds
+[0m21:07:52.311260 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.598 seconds
+[0m21:07:52.314607 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_GTM_DB_SILVER_GOLD'
+[0m21:07:52.323346 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_GTM_DB_SILVER_BRONZE'
+[0m21:07:52.332603 [debug] [ThreadPool]: Using snowflake connection "list_GTM_DB_SILVER_GOLD"
+[0m21:07:52.335603 [debug] [ThreadPool]: Using snowflake connection "list_GTM_DB_SILVER_BRONZE"
+[0m21:07:52.336243 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_GTM_DB_SILVER_SILVER'
+[0m21:07:52.336880 [debug] [ThreadPool]: On list_GTM_DB_SILVER_GOLD: show objects in GTM_DB.SILVER_GOLD
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "connection_name": "list_GTM_DB_SILVER_GOLD"} */;
+[0m21:07:52.337350 [debug] [ThreadPool]: On list_GTM_DB_SILVER_BRONZE: show objects in GTM_DB.SILVER_BRONZE
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "connection_name": "list_GTM_DB_SILVER_BRONZE"} */;
+[0m21:07:52.340613 [debug] [ThreadPool]: Using snowflake connection "list_GTM_DB_SILVER_SILVER"
+[0m21:07:52.341097 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:07:52.341570 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:07:52.342055 [debug] [ThreadPool]: On list_GTM_DB_SILVER_SILVER: show objects in GTM_DB.SILVER_SILVER
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "connection_name": "list_GTM_DB_SILVER_SILVER"} */;
+[0m21:07:52.343255 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:07:53.598505 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 1.257 seconds
+[0m21:07:53.621195 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 1.278 seconds
+[0m21:07:55.341960 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 3.000 seconds
+[0m21:07:55.353935 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '2ec17a81-59d0-4689-8475-bb59df2feba5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001982C026450>]}
+[0m21:07:55.482820 [debug] [Thread-2 (]: Began running node model.transformations.bronze_leads
+[0m21:07:55.483577 [info ] [Thread-2 (]: 1 of 3 START sql view model SILVER_BRONZE.bronze_leads ......................... [RUN]
+[0m21:07:55.484630 [debug] [Thread-2 (]: Acquiring new snowflake connection 'model.transformations.bronze_leads'
+[0m21:07:55.485154 [debug] [Thread-2 (]: Began compiling node model.transformations.bronze_leads
+[0m21:07:55.495402 [debug] [Thread-2 (]: Writing injected SQL for node "model.transformations.bronze_leads"
+[0m21:07:55.498987 [debug] [Thread-2 (]: Began executing node model.transformations.bronze_leads
+[0m21:07:55.537450 [debug] [Thread-2 (]: Writing runtime sql for node "model.transformations.bronze_leads"
+[0m21:07:55.541734 [debug] [Thread-2 (]: Using snowflake connection "model.transformations.bronze_leads"
+[0m21:07:55.542302 [debug] [Thread-2 (]: On model.transformations.bronze_leads: create or replace   view GTM_DB.SILVER_BRONZE.bronze_leads
+  
+  
+  
+  
+  as (
+    
+
+SELECT
+    LEAD_ID,
+    SOURCE,
+    FIRST_NAME,
+    LAST_NAME,
+    EMAIL,
+    JOB_TITLE,
+    SENIORITY,
+    COMPANY_NAME,
+    COMPANY_DOMAIN,
+    INDUSTRY,
+    EMPLOYEE_COUNT::INTEGER    AS EMPLOYEE_COUNT,
+    APOLLO_SCORE::FLOAT        AS APOLLO_SCORE,
+    INGESTED_AT::TIMESTAMP_NTZ AS INGESTED_AT
+FROM GTM_DB.RAW.apollo_leads
+WHERE LEAD_ID IS NOT NULL
+  AND LEAD_ID != 'None'
+  )
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "node_id": "model.transformations.bronze_leads"} */;
+[0m21:07:55.542759 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m21:07:57.037463 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 1.494 seconds
+[0m21:07:57.098249 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2ec17a81-59d0-4689-8475-bb59df2feba5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001982CC0E360>]}
+[0m21:07:57.099235 [info ] [Thread-2 (]: 1 of 3 OK created sql view model SILVER_BRONZE.bronze_leads .................... [[32mSUCCESS 1[0m in 1.60s]
+[0m21:07:57.100450 [debug] [Thread-2 (]: Finished running node model.transformations.bronze_leads
+[0m21:07:57.102132 [debug] [Thread-3 (]: Began running node model.transformations.silver_leads
+[0m21:07:57.103082 [info ] [Thread-3 (]: 2 of 3 START sql table model SILVER_SILVER.silver_leads ........................ [RUN]
+[0m21:07:57.104512 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.transformations.silver_leads'
+[0m21:07:57.105603 [debug] [Thread-3 (]: Began compiling node model.transformations.silver_leads
+[0m21:07:57.109884 [debug] [Thread-3 (]: Writing injected SQL for node "model.transformations.silver_leads"
+[0m21:07:57.112174 [debug] [Thread-3 (]: Began executing node model.transformations.silver_leads
+[0m21:07:57.152692 [debug] [Thread-3 (]: Writing runtime sql for node "model.transformations.silver_leads"
+[0m21:07:57.158105 [debug] [Thread-3 (]: Using snowflake connection "model.transformations.silver_leads"
+[0m21:07:57.159334 [debug] [Thread-3 (]: On model.transformations.silver_leads: create or replace transient table GTM_DB.SILVER_SILVER.silver_leads
+    
+    
+    
+    as (
+
+WITH cleaned AS (
+    SELECT
+        LEAD_ID,
+        SOURCE,
+        TRIM(FIRST_NAME) || ' ' || TRIM(LAST_NAME)          AS FULL_NAME,
+        LOWER(TRIM(EMAIL))                                   AS EMAIL,
+        SPLIT_PART(LOWER(TRIM(EMAIL)), '@', 2)               AS EMAIL_DOMAIN,
+        LOWER(TRIM(JOB_TITLE))                               AS JOB_TITLE,
+        LOWER(COALESCE(NULLIF(SENIORITY,'None'),'unknown'))  AS SENIORITY,
+        TRIM(COMPANY_NAME)                                   AS COMPANY_NAME,
+        LOWER(TRIM(COMPANY_DOMAIN))                          AS COMPANY_DOMAIN,
+        LOWER(COALESCE(NULLIF(INDUSTRY,'None'),'unknown'))   AS INDUSTRY,
+        EMPLOYEE_COUNT,
+        APOLLO_SCORE,
+        INGESTED_AT
+    FROM GTM_DB.SILVER_BRONZE.bronze_leads
+    WHERE EMAIL IS NOT NULL
+      AND EMAIL != 'None'
+),
+
+deduped AS (
+    SELECT *,
+        ROW_NUMBER() OVER (
+            PARTITION BY EMAIL
+            ORDER BY INGESTED_AT DESC
+        ) AS rn
+    FROM cleaned
+)
+
+SELECT * EXCLUDE (rn)
+FROM deduped
+WHERE rn = 1
+    )
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "node_id": "model.transformations.silver_leads"} */;
+[0m21:07:57.160376 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m21:08:00.798738 [debug] [Thread-3 (]: SQL status: SUCCESS 143 in 3.638 seconds
+[0m21:08:00.807846 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2ec17a81-59d0-4689-8475-bb59df2feba5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001982CCCB6B0>]}
+[0m21:08:00.811245 [info ] [Thread-3 (]: 2 of 3 OK created sql table model SILVER_SILVER.silver_leads ................... [[32mSUCCESS 143[0m in 3.70s]
+[0m21:08:00.815947 [debug] [Thread-3 (]: Finished running node model.transformations.silver_leads
+[0m21:08:00.819840 [debug] [Thread-4 (]: Began running node model.transformations.gold_lead_scores
+[0m21:08:00.822694 [info ] [Thread-4 (]: 3 of 3 START sql table model SILVER_GOLD.gold_lead_scores ...................... [RUN]
+[0m21:08:00.826022 [debug] [Thread-4 (]: Acquiring new snowflake connection 'model.transformations.gold_lead_scores'
+[0m21:08:00.827648 [debug] [Thread-4 (]: Began compiling node model.transformations.gold_lead_scores
+[0m21:08:00.841626 [debug] [Thread-4 (]: Writing injected SQL for node "model.transformations.gold_lead_scores"
+[0m21:08:00.845087 [debug] [Thread-4 (]: Began executing node model.transformations.gold_lead_scores
+[0m21:08:00.849869 [debug] [Thread-4 (]: Writing runtime sql for node "model.transformations.gold_lead_scores"
+[0m21:08:00.855711 [debug] [Thread-4 (]: Using snowflake connection "model.transformations.gold_lead_scores"
+[0m21:08:00.856626 [debug] [Thread-4 (]: On model.transformations.gold_lead_scores: create or replace transient table GTM_DB.SILVER_GOLD.gold_lead_scores
+    
+    
+    
+    as (
+
+WITH scored AS (
+    SELECT
+        LEAD_ID,
+        SOURCE,
+        FULL_NAME,
+        EMAIL,
+        EMAIL_DOMAIN,
+        JOB_TITLE,
+        SENIORITY,
+        COMPANY_NAME,
+        INDUSTRY,
+        EMPLOYEE_COUNT,
+
+        -- Seniority score (0-40)
+        CASE
+            WHEN SENIORITY IN ('c_suite','vp') THEN 40
+            WHEN SENIORITY = 'director'         THEN 30
+            WHEN SENIORITY = 'manager'          THEN 20
+            WHEN SENIORITY = 'senior'           THEN 10
+            ELSE 5
+        END AS SENIORITY_SCORE,
+
+        -- Company size score (0-30)
+        CASE
+            WHEN EMPLOYEE_COUNT >= 1000 THEN 30
+            WHEN EMPLOYEE_COUNT >= 200  THEN 25
+            WHEN EMPLOYEE_COUNT >= 50   THEN 15
+            WHEN EMPLOYEE_COUNT >= 10   THEN 10
+            ELSE 5
+        END AS COMPANY_SIZE_SCORE,
+
+        -- Industry fit score (0-20)
+        CASE
+            WHEN INDUSTRY IN (
+                'software','technology','saas',
+                'fintech','information technology'
+            ) THEN 20
+            WHEN INDUSTRY IN ('finance','banking','healthcare') THEN 15
+            ELSE 5
+        END AS INDUSTRY_SCORE,
+
+        -- Completeness score (0-10)
+        (CASE WHEN EMAIL        IS NOT NULL THEN 3 ELSE 0 END +
+         CASE WHEN COMPANY_NAME IS NOT NULL THEN 2 ELSE 0 END +
+         CASE WHEN JOB_TITLE    IS NOT NULL THEN 2 ELSE 0 END +
+         CASE WHEN EMAIL_DOMAIN IS NOT NULL THEN 3 ELSE 0 END
+        ) AS COMPLETENESS_SCORE
+
+    FROM GTM_DB.SILVER_SILVER.silver_leads
+),
+
+final AS (
+    SELECT *,
+        SENIORITY_SCORE + COMPANY_SIZE_SCORE +
+        INDUSTRY_SCORE  + COMPLETENESS_SCORE  AS LEAD_SCORE
+    FROM scored
+)
+
+SELECT *,
+    CASE
+        WHEN LEAD_SCORE >= 80 THEN 'hot'
+        WHEN LEAD_SCORE >= 60 THEN 'warm'
+        WHEN LEAD_SCORE >= 40 THEN 'cool'
+        ELSE 'cold'
+    END AS INTENT_LEVEL,
+
+    CASE
+        WHEN LEAD_SCORE >= 80 THEN 'schedule_demo'
+        WHEN LEAD_SCORE >= 60 THEN 'send_case_study'
+        WHEN LEAD_SCORE >= 40 THEN 'add_to_nurture'
+        ELSE 'enrich_data'
+    END AS RECOMMENDED_ACTION,
+
+    CURRENT_TIMESTAMP() AS SCORED_AT
+
+FROM final
+    )
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "node_id": "model.transformations.gold_lead_scores"} */;
+[0m21:08:00.857407 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m21:08:02.938096 [debug] [Thread-4 (]: SQL status: SUCCESS 143 in 2.079 seconds
+[0m21:08:02.950004 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2ec17a81-59d0-4689-8475-bb59df2feba5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001982CD131D0>]}
+[0m21:08:02.951845 [info ] [Thread-4 (]: 3 of 3 OK created sql table model SILVER_GOLD.gold_lead_scores ................. [[32mSUCCESS 143[0m in 2.12s]
+[0m21:08:02.954087 [debug] [Thread-4 (]: Finished running node model.transformations.gold_lead_scores
+[0m21:08:02.960083 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m21:08:02.961599 [debug] [MainThread]: Connection 'create_GTM_DB_SILVER_BRONZE' was left open.
+[0m21:08:02.963178 [debug] [MainThread]: On create_GTM_DB_SILVER_BRONZE: Close
+[0m21:08:03.417796 [debug] [MainThread]: Connection 'create_GTM_DB_SILVER_SILVER' was left open.
+[0m21:08:03.420383 [debug] [MainThread]: On create_GTM_DB_SILVER_SILVER: Close
+[0m21:08:03.845373 [debug] [MainThread]: Connection 'create_GTM_DB_SILVER_GOLD' was left open.
+[0m21:08:03.847088 [debug] [MainThread]: On create_GTM_DB_SILVER_GOLD: Close
+[0m21:08:04.429134 [debug] [MainThread]: Connection 'list_GTM_DB_SILVER_GOLD' was left open.
+[0m21:08:04.431732 [debug] [MainThread]: On list_GTM_DB_SILVER_GOLD: Close
+[0m21:08:04.851128 [debug] [MainThread]: Connection 'list_GTM_DB_SILVER_BRONZE' was left open.
+[0m21:08:04.852027 [debug] [MainThread]: On list_GTM_DB_SILVER_BRONZE: Close
+[0m21:08:05.291101 [debug] [MainThread]: Connection 'list_GTM_DB_SILVER_SILVER' was left open.
+[0m21:08:05.294089 [debug] [MainThread]: On list_GTM_DB_SILVER_SILVER: Close
+[0m21:08:05.766484 [debug] [MainThread]: Connection 'model.transformations.bronze_leads' was left open.
+[0m21:08:05.767439 [debug] [MainThread]: On model.transformations.bronze_leads: Close
+[0m21:08:06.189755 [debug] [MainThread]: Connection 'model.transformations.silver_leads' was left open.
+[0m21:08:06.190339 [debug] [MainThread]: On model.transformations.silver_leads: Close
+[0m21:08:06.704280 [debug] [MainThread]: Connection 'model.transformations.gold_lead_scores' was left open.
+[0m21:08:06.706214 [debug] [MainThread]: On model.transformations.gold_lead_scores: Close
+[0m21:08:07.712476 [info ] [MainThread]: 
+[0m21:08:07.716532 [info ] [MainThread]: Finished running 2 table models, 1 view model in 0 hours 0 minutes and 18.66 seconds (18.66s).
+[0m21:08:07.727633 [debug] [MainThread]: Command end result
+[0m21:08:07.929285 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\Student\gtm-data-platform\transformations\target\manifest.json
+[0m21:08:07.933177 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\Student\gtm-data-platform\transformations\target\semantic_manifest.json
+[0m21:08:07.942071 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\Student\gtm-data-platform\transformations\target\run_results.json
+[0m21:08:07.942762 [info ] [MainThread]: 
+[0m21:08:07.943673 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m21:08:07.944421 [info ] [MainThread]: 
+[0m21:08:07.945567 [info ] [MainThread]: Done. PASS=3 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=3
+[0m21:08:07.948061 [debug] [MainThread]: Command `dbt run` succeeded at 21:08:07.947808 after 27.64 seconds
+[0m21:08:07.949004 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000198214C7BD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001981B049DA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001981C3DC530>]}
+[0m21:08:07.949472 [debug] [MainThread]: Flushing usage events
+[0m21:08:09.618402 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:10:32.514131 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002472C27C6E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002472DD9FD90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002472DD9F9D0>]}
+
+
+============================== 21:10:32.520502 | 5c1d7d01-e75d-4a1f-b5aa-bfe73d94ca5b ==============================
+[0m21:10:32.520502 [info ] [MainThread]: Running with dbt=1.11.11
+[0m21:10:32.521693 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Student\\.dbt', 'indirect_selection': 'eager', 'invocation_command': 'dbt test', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\Student\\gtm-data-platform\\transformations\\logs'}
+[0m21:10:33.797945 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m21:10:33.798518 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m21:10:33.798941 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m21:10:34.170604 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '5c1d7d01-e75d-4a1f-b5aa-bfe73d94ca5b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002472C81E190>]}
+[0m21:10:34.311408 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '5c1d7d01-e75d-4a1f-b5aa-bfe73d94ca5b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002472C0D09E0>]}
+[0m21:10:34.312835 [info ] [MainThread]: Registered adapter: snowflake=1.11.5
+[0m21:10:35.029794 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m21:10:35.317166 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m21:10:35.317632 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m21:10:35.317966 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m21:10:35.365805 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '5c1d7d01-e75d-4a1f-b5aa-bfe73d94ca5b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024737F49950>]}
+[0m21:10:35.479247 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\Student\gtm-data-platform\transformations\target\manifest.json
+[0m21:10:35.483173 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\Student\gtm-data-platform\transformations\target\semantic_manifest.json
+[0m21:10:35.594751 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '5c1d7d01-e75d-4a1f-b5aa-bfe73d94ca5b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024738380E60>]}
+[0m21:10:35.595542 [info ] [MainThread]: Found 3 models, 2 sources, 536 macros
+[0m21:10:35.596259 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '5c1d7d01-e75d-4a1f-b5aa-bfe73d94ca5b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247383B3070>]}
+[0m21:10:35.599027 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m21:10:35.602760 [debug] [MainThread]: Command end result
+[0m21:10:35.648392 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\Student\gtm-data-platform\transformations\target\manifest.json
+[0m21:10:35.652259 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\Student\gtm-data-platform\transformations\target\semantic_manifest.json
+[0m21:10:35.657169 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\Student\gtm-data-platform\transformations\target\run_results.json
+[0m21:10:35.659246 [debug] [MainThread]: Command `dbt test` succeeded at 21:10:35.659024 after 3.38 seconds
+[0m21:10:35.659762 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002473837AD00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002472DC06C90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000247383668D0>]}
+[0m21:10:35.660235 [debug] [MainThread]: Flushing usage events
+[0m21:10:37.445685 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:16:33.205539 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002265F27C6E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022660D9BD90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022660D9B9D0>]}
+
+
+============================== 21:16:33.211347 | d651410c-d236-4b72-b1f9-e343542137b6 ==============================
+[0m21:16:33.211347 [info ] [MainThread]: Running with dbt=1.11.11
+[0m21:16:33.212624 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Student\\.dbt', 'invocation_command': 'dbt docs generate', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\Student\\gtm-data-platform\\transformations\\logs'}
+[0m21:16:35.103262 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m21:16:35.104394 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m21:16:35.105243 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m21:16:35.842325 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd651410c-d236-4b72-b1f9-e343542137b6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002265F81E190>]}
+[0m21:16:36.062838 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'd651410c-d236-4b72-b1f9-e343542137b6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002265F0D09E0>]}
+[0m21:16:36.065133 [info ] [MainThread]: Registered adapter: snowflake=1.11.5
+[0m21:16:37.434002 [debug] [MainThread]: checksum: 30a8cc8fdcbf66701b0944d4ccce3fa46dd04b61e5df68b9f16d57b2e0e3f0be, vars: {}, profile: , target: , version: 1.11.11
+[0m21:16:37.774897 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m21:16:37.775799 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m21:16:37.776471 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m21:16:37.863482 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'd651410c-d236-4b72-b1f9-e343542137b6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002266AF51850>]}
+[0m21:16:38.000118 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'd651410c-d236-4b72-b1f9-e343542137b6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002266AEB7020>]}
+[0m21:16:38.003316 [info ] [MainThread]: Found 3 models, 2 sources, 536 macros
+[0m21:16:38.006118 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd651410c-d236-4b72-b1f9-e343542137b6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002266AFA1A90>]}
+[0m21:16:38.019147 [info ] [MainThread]: 
+[0m21:16:38.022729 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m21:16:38.028123 [info ] [MainThread]: 
+[0m21:16:38.032145 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m21:16:38.038598 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_GTM_DB_SILVER_GOLD'
+[0m21:16:38.055259 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_GTM_DB_SILVER_BRONZE'
+[0m21:16:38.085970 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_GTM_DB_SILVER_SILVER'
+[0m21:16:38.415246 [debug] [ThreadPool]: Using snowflake connection "list_GTM_DB_SILVER_SILVER"
+[0m21:16:38.416354 [debug] [ThreadPool]: Using snowflake connection "list_GTM_DB_SILVER_GOLD"
+[0m21:16:38.417063 [debug] [ThreadPool]: Using snowflake connection "list_GTM_DB_SILVER_BRONZE"
+[0m21:16:38.417690 [debug] [ThreadPool]: On list_GTM_DB_SILVER_SILVER: show objects in GTM_DB.SILVER_SILVER
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "connection_name": "list_GTM_DB_SILVER_SILVER"} */;
+[0m21:16:38.418211 [debug] [ThreadPool]: On list_GTM_DB_SILVER_GOLD: show objects in GTM_DB.SILVER_GOLD
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "connection_name": "list_GTM_DB_SILVER_GOLD"} */;
+[0m21:16:38.419102 [debug] [ThreadPool]: On list_GTM_DB_SILVER_BRONZE: show objects in GTM_DB.SILVER_BRONZE
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "connection_name": "list_GTM_DB_SILVER_BRONZE"} */;
+[0m21:16:38.420074 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:16:38.420933 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:16:38.421646 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:16:40.279073 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 1.857 seconds
+[0m21:16:40.418781 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 1.998 seconds
+[0m21:16:40.460181 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 2.039 seconds
+[0m21:16:40.472618 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd651410c-d236-4b72-b1f9-e343542137b6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002266B365B20>]}
+[0m21:16:40.494364 [debug] [Thread-2 (]: Began running node model.transformations.bronze_leads
+[0m21:16:40.496847 [debug] [Thread-2 (]: Acquiring new snowflake connection 'model.transformations.bronze_leads'
+[0m21:16:40.498584 [debug] [Thread-2 (]: Began compiling node model.transformations.bronze_leads
+[0m21:16:40.575638 [debug] [Thread-2 (]: Writing injected SQL for node "model.transformations.bronze_leads"
+[0m21:16:40.581412 [debug] [Thread-2 (]: Began executing node model.transformations.bronze_leads
+[0m21:16:40.585991 [debug] [Thread-2 (]: Finished running node model.transformations.bronze_leads
+[0m21:16:40.590020 [debug] [Thread-3 (]: Began running node model.transformations.silver_leads
+[0m21:16:40.593485 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.transformations.silver_leads'
+[0m21:16:40.595815 [debug] [Thread-3 (]: Began compiling node model.transformations.silver_leads
+[0m21:16:40.607666 [debug] [Thread-3 (]: Writing injected SQL for node "model.transformations.silver_leads"
+[0m21:16:40.610438 [debug] [Thread-3 (]: Began executing node model.transformations.silver_leads
+[0m21:16:40.612729 [debug] [Thread-3 (]: Finished running node model.transformations.silver_leads
+[0m21:16:40.614239 [debug] [Thread-4 (]: Began running node model.transformations.gold_lead_scores
+[0m21:16:40.615394 [debug] [Thread-4 (]: Acquiring new snowflake connection 'model.transformations.gold_lead_scores'
+[0m21:16:40.616467 [debug] [Thread-4 (]: Began compiling node model.transformations.gold_lead_scores
+[0m21:16:40.623310 [debug] [Thread-4 (]: Writing injected SQL for node "model.transformations.gold_lead_scores"
+[0m21:16:40.625695 [debug] [Thread-4 (]: Began executing node model.transformations.gold_lead_scores
+[0m21:16:40.628310 [debug] [Thread-4 (]: Finished running node model.transformations.gold_lead_scores
+[0m21:16:40.630972 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m21:16:40.631795 [debug] [MainThread]: Connection 'list_GTM_DB_SILVER_GOLD' was left open.
+[0m21:16:40.632697 [debug] [MainThread]: On list_GTM_DB_SILVER_GOLD: Close
+[0m21:16:41.058258 [debug] [MainThread]: Connection 'list_GTM_DB_SILVER_BRONZE' was left open.
+[0m21:16:41.060771 [debug] [MainThread]: On list_GTM_DB_SILVER_BRONZE: Close
+[0m21:16:41.554657 [debug] [MainThread]: Connection 'list_GTM_DB_SILVER_SILVER' was left open.
+[0m21:16:41.557401 [debug] [MainThread]: On list_GTM_DB_SILVER_SILVER: Close
+[0m21:16:42.031987 [debug] [MainThread]: Connection 'model.transformations.bronze_leads' was properly closed.
+[0m21:16:42.033793 [debug] [MainThread]: Connection 'model.transformations.silver_leads' was properly closed.
+[0m21:16:42.035270 [debug] [MainThread]: Connection 'model.transformations.gold_lead_scores' was properly closed.
+[0m21:16:42.039781 [debug] [MainThread]: Command end result
+[0m21:16:42.277640 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\Student\gtm-data-platform\transformations\target\manifest.json
+[0m21:16:42.284635 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\Student\gtm-data-platform\transformations\target\semantic_manifest.json
+[0m21:16:42.301708 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\Student\gtm-data-platform\transformations\target\run_results.json
+[0m21:16:43.460729 [debug] [MainThread]: Acquiring new snowflake connection 'generate_catalog'
+[0m21:16:43.461609 [info ] [MainThread]: Building catalog
+[0m21:16:43.489649 [debug] [ThreadPool]: Acquiring new snowflake connection 'GTM_DB.information_schema'
+[0m21:16:43.529191 [debug] [ThreadPool]: Using snowflake connection "GTM_DB.information_schema"
+[0m21:16:43.530279 [debug] [ThreadPool]: On GTM_DB.information_schema: with tables as (
+            select
+        table_catalog as "table_database",
+        table_schema as "table_schema",
+        table_name as "table_name",
+        case
+            when is_dynamic = 'YES' and table_type = 'BASE TABLE' THEN 'DYNAMIC TABLE'
+            else table_type
+        end as "table_type",
+        comment as "table_comment",
+
+        -- note: this is the _role_ that owns the table
+        table_owner as "table_owner",
+
+        'Clustering Key' as "stats:clustering_key:label",
+        clustering_key as "stats:clustering_key:value",
+        'The key used to cluster this table' as "stats:clustering_key:description",
+        (clustering_key is not null) as "stats:clustering_key:include",
+
+        'Row Count' as "stats:row_count:label",
+        row_count as "stats:row_count:value",
+        'An approximate count of rows in this table' as "stats:row_count:description",
+        (row_count is not null) as "stats:row_count:include",
+
+        'Approximate Size' as "stats:bytes:label",
+        bytes as "stats:bytes:value",
+        'Approximate size of the table as reported by Snowflake' as "stats:bytes:description",
+        (bytes is not null) as "stats:bytes:include",
+
+        'Last Modified' as "stats:last_modified:label",
+        to_varchar(convert_timezone('UTC', last_altered), 'yyyy-mm-dd HH24:MI'||'UTC') as "stats:last_modified:value",
+        'The timestamp for last update/change' as "stats:last_modified:description",
+        (last_altered is not null and table_type='BASE TABLE') as "stats:last_modified:include"
+    from GTM_DB.INFORMATION_SCHEMA.tables
+            where (
+                (
+                    
+    "table_schema" ilike 'RAW' and upper("table_schema") = upper('RAW')
+
+                    and 
+    "table_name" ilike 'apollo_leads' and upper("table_name") = upper('apollo_leads')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'SILVER_BRONZE' and upper("table_schema") = upper('SILVER_BRONZE')
+
+                    and 
+    "table_name" ilike 'bronze_leads' and upper("table_name") = upper('bronze_leads')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'SILVER_GOLD' and upper("table_schema") = upper('SILVER_GOLD')
+
+                    and 
+    "table_name" ilike 'gold_lead_scores' and upper("table_name") = upper('gold_lead_scores')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'RAW' and upper("table_schema") = upper('RAW')
+
+                    and 
+    "table_name" ilike 'lead_scores' and upper("table_name") = upper('lead_scores')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'SILVER_SILVER' and upper("table_schema") = upper('SILVER_SILVER')
+
+                    and 
+    "table_name" ilike 'silver_leads' and upper("table_name") = upper('silver_leads')
+
+                )
+            )
+        ),
+        columns as (
+            select
+        table_catalog as "table_database",
+        table_schema as "table_schema",
+        table_name as "table_name",
+
+        column_name as "column_name",
+        ordinal_position as "column_index",
+        data_type as "column_type",
+        comment as "column_comment"
+    from GTM_DB.INFORMATION_SCHEMA.columns
+            where (
+                (
+                    
+    "table_schema" ilike 'RAW' and upper("table_schema") = upper('RAW')
+
+                    and 
+    "table_name" ilike 'apollo_leads' and upper("table_name") = upper('apollo_leads')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'SILVER_BRONZE' and upper("table_schema") = upper('SILVER_BRONZE')
+
+                    and 
+    "table_name" ilike 'bronze_leads' and upper("table_name") = upper('bronze_leads')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'SILVER_GOLD' and upper("table_schema") = upper('SILVER_GOLD')
+
+                    and 
+    "table_name" ilike 'gold_lead_scores' and upper("table_name") = upper('gold_lead_scores')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'RAW' and upper("table_schema") = upper('RAW')
+
+                    and 
+    "table_name" ilike 'lead_scores' and upper("table_name") = upper('lead_scores')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'SILVER_SILVER' and upper("table_schema") = upper('SILVER_SILVER')
+
+                    and 
+    "table_name" ilike 'silver_leads' and upper("table_name") = upper('silver_leads')
+
+                )
+            )
+        )
+        select *
+    from tables
+    join columns using ("table_database", "table_schema", "table_name")
+    order by "column_index"
+/* {"app": "dbt", "dbt_version": "1.11.11", "profile_name": "transformations", "target_name": "dev", "connection_name": "GTM_DB.information_schema"} */
+[0m21:16:43.531841 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m21:16:48.347381 [debug] [ThreadPool]: SQL status: SUCCESS 78 in 4.815 seconds
+[0m21:16:48.586633 [debug] [MainThread]: Wrote artifact CatalogArtifact to C:\Users\Student\gtm-data-platform\transformations\target\catalog.json
+[0m21:16:48.712801 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\Student\gtm-data-platform\transformations\target\manifest.json
+[0m21:16:48.719670 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\Student\gtm-data-platform\transformations\target\semantic_manifest.json
+[0m21:16:48.720735 [info ] [MainThread]: Catalog written to C:\Users\Student\gtm-data-platform\transformations\target\catalog.json
+[0m21:16:48.725435 [debug] [MainThread]: Command `dbt docs generate` succeeded at 21:16:48.725099 after 15.93 seconds
+[0m21:16:48.726044 [debug] [MainThread]: Connection 'generate_catalog' was properly closed.
+[0m21:16:48.726593 [debug] [MainThread]: Connection 'GTM_DB.information_schema' was left open.
+[0m21:16:48.727256 [debug] [MainThread]: On GTM_DB.information_schema: Close
+[0m21:16:49.251073 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022660C06C90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002266B7C7EE0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002266B7EF750>]}
+[0m21:16:49.254950 [debug] [MainThread]: Flushing usage events
+[0m21:16:51.533341 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:16:56.313749 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CEAE37C6E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CEAA7BB4D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CEB00179D0>]}
+
+
+============================== 21:16:56.324251 | 706426dd-84ba-464c-9ca9-3ccfe01472c8 ==============================
+[0m21:16:56.324251 [info ] [MainThread]: Running with dbt=1.11.11
+[0m21:16:56.326028 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Student\\.dbt', 'invocation_command': 'dbt docs serve', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\Student\\gtm-data-platform\\transformations\\logs'}
+[0m21:16:58.243805 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m21:16:58.244989 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m21:16:58.245803 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m21:16:59.050205 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '706426dd-84ba-464c-9ca9-3ccfe01472c8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CEAE71E190>]}
+[0m21:16:59.342614 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '706426dd-84ba-464c-9ca9-3ccfe01472c8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CEB98EB350>]}

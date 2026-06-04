@@ -1,0 +1,19 @@
+{{ config(materialized='view', schema='BRONZE') }}
+
+SELECT
+    LEAD_ID,
+    SOURCE,
+    FIRST_NAME,
+    LAST_NAME,
+    EMAIL,
+    JOB_TITLE,
+    SENIORITY,
+    COMPANY_NAME,
+    COMPANY_DOMAIN,
+    INDUSTRY,
+    EMPLOYEE_COUNT::INTEGER    AS EMPLOYEE_COUNT,
+    APOLLO_SCORE::FLOAT        AS APOLLO_SCORE,
+    INGESTED_AT::TIMESTAMP_NTZ AS INGESTED_AT
+FROM {{ source('raw', 'apollo_leads') }}
+WHERE LEAD_ID IS NOT NULL
+  AND LEAD_ID != 'None'

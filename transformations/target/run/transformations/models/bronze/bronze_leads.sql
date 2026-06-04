@@ -1,0 +1,28 @@
+
+  create or replace   view GTM_DB.SILVER_BRONZE.bronze_leads
+  
+  
+  
+  
+  as (
+    
+
+SELECT
+    LEAD_ID,
+    SOURCE,
+    FIRST_NAME,
+    LAST_NAME,
+    EMAIL,
+    JOB_TITLE,
+    SENIORITY,
+    COMPANY_NAME,
+    COMPANY_DOMAIN,
+    INDUSTRY,
+    EMPLOYEE_COUNT::INTEGER    AS EMPLOYEE_COUNT,
+    APOLLO_SCORE::FLOAT        AS APOLLO_SCORE,
+    INGESTED_AT::TIMESTAMP_NTZ AS INGESTED_AT
+FROM GTM_DB.RAW.apollo_leads
+WHERE LEAD_ID IS NOT NULL
+  AND LEAD_ID != 'None'
+  );
+

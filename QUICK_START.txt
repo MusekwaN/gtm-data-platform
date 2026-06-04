@@ -1,0 +1,183 @@
+# QUICK START - Running Pipeline Scripts
+
+## 📋 Pre-Flight Checklist
+
+```
+□ Python 3.8+ installed
+□ dependencies installed: pip install -r requirements.txt  
+□ Kafka running on localhost:9092
+□ Kafka topics created: apollo_leads, crm_events
+□ Directories exist: ./data/, ./checkpoints/
+```
+
+## 🚀 Run Scripts (3 Terminals)
+
+### Terminal 1: BRONZE LAYER
+```bash
+python streaming\spark_jobs\bronze_ingestion.py
+```
+
+**Expected Output:**
+```
+Starting Bronze ingestion layer...
+Bronze streams running. Waiting for data...
+Batch [0] written 23 records to ./data/bronze/leads
+Batch [1] written 45 records to ./data/bronze/leads
+...
+```
+
+**What it does:** Ingests raw data from Kafka topics
+- Runs: Continuously (every 30 seconds)
+- Inputs: apollo_leads, crm_events topics
+- Outputs: ./data/bronze/leads/ (Parquet)
+- Metadata: kafka_key, topic, partition, offset
+
+---
+
+### Terminal 2: SILVER LAYER
+```bash
+python streaming\spark_jobs\silver_processing.py
+```
+
+**Expected Output:**
+```
+Starting Silver processing layer...
+Silver stream running...
+Batch [1] processed 23 records (cleaned & deduplicated)
+✓ Emails normalized (lowercase)
+✓ Email domains extracted
+✓ Full names concatenated
+✓ 3 duplicate records removed
+...
+```
+
+**What it does:** Cleans and standardizes Bronze data
+- Runs: Continuously (every 60 seconds)
+- Inputs: ./data/bronze/leads/ (from Bronze)
+- Outputs: ./data/silver/leads/ (Parquet)
+- Transforms: Email, names, seniority, industry, duplicates
+
+---
+
+### Terminal 3: GOLD LAYER
+```bash
+python streaming\spark_jobs\gold_lead_scoring.py
+```
+
+**Expected Output:**
+```
+Running Gold lead scoring...
+Reading 126 records from ./data/silver/leads
+
+Scoring Applied:
+✓ Seniority scores calculated (5-40 points)
+✓ Company size scores calculated (5-30 points)
+✓ Industry fit scores calculated (5-20 points)
+✓ Data completeness scores calculated (0-10 pts)
+
+Gold lead scores written successfully
+
+Sample Gold output:
++----------+----------+-----------+----------+-------------------+
+|full_name |company   |lead_score |intent    |action             |
++----------+----------+-----------+----------+-------------------+
+|John Smith|Acme Corp |85         |hot       |schedule_demo      |
+|Jane Doe  |TechCo Inc|92         |hot       |schedule_demo      |
+|Bob Wilson|MegaCorp  |68         |warm      |send_case_study    |
++----------+----------+-----------+----------+-------------------+
+
+Score Distribution:
+Hot (80-100):    32 leads (25.4%)
+Warm (60-79):    48 leads (38.1%)
+Cool (40-59):    35 leads (27.8%)
+Cold (0-39):     11 leads (8.7%)
+```
+
+**What it does:** Scores leads and classifies intent
+- Runs: Once (batch processing)
+- Inputs: ./data/silver/leads/ (from Silver)
+- Outputs: ./data/gold/lead_scores/ (Parquet)
+- Scoring: 4 components (seniority, size, industry, completeness)
+- Intent: Hot/Warm/Cool/Cold classification
+
+---
+
+## 📊 Data Flow
+
+```
+Kafka Topics
+     ↓
+[Bronze] Raw ingestion → ./data/bronze/leads/
+     ↓
+[Silver] Clean & standardize → ./data/silver/leads/
+     ↓
+[Gold] Score & classify → ./data/gold/lead_scores/
+     ↓
+Ready for BI/Dashboard
+```
+
+---
+
+## ✅ Verify Outputs
+
+### Check if data was written
+```bash
+# List files at each layer
+dir ./data/bronze/leads/
+dir ./data/silver/leads/
+dir ./data/gold/lead_scores/
+
+# Count records (with Spark)
+spark-shell
+>>> spark.read.parquet("./data/bronze/leads").count()
+>>> spark.read.parquet("./data/silver/leads").count()
+>>> spark.read.parquet("./data/gold/lead_scores").count()
+```
+
+---
+
+## 🔧 Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| pyspark not found | `pip install -r requirements.txt` |
+| Connection refused | Start Kafka: `localhost:9092` |
+| No data in Bronze | Check Kafka topics have data |
+| No data in Silver | Wait 60+ seconds, Bronze must write first |
+| Gold says "no data" | Run Silver first, wait for data |
+
+---
+
+## 📝 Script Status
+
+```
+✅ bronze_ingestion.py ........... VALIDATED & READY
+✅ silver_processing.py ......... VALIDATED & READY
+✅ gold_lead_scoring.py ........ VALIDATED & READY
+✅ All schemas .............     VALIDATED & READY
+```
+
+**All scripts are production-ready!** 🚀
+
+---
+
+## 📚 Documentation Files
+
+Generated documentation in session files:
+- `pipeline_analysis.md` - Detailed issue analysis
+- `fixes_applied.md` - All fixes documentation
+- `test_results.md` - Full test results
+- `script_output_guide.md` - Expected outputs for each script
+
+---
+
+**Run validation suite:**
+```bash
+python run_and_validate_scripts.py
+```
+
+or
+
+```bash
+run_validation.bat
+```

@@ -40,6 +40,7 @@ SILVER_LEAD_SCHEMA = StructType([
     StructField("company_domain",   StringType(),  True),
     StructField("industry",         StringType(),  True),
     StructField("employee_count",   IntegerType(), True),
-    StructField("ingested_at",      TimestampType(),True),
-    StructField("processed_at",     TimestampType(),True),
+    StructField("lead_status",      StringType(),  True),
+    StructField("processed_at",     TimestampType(), True),
+    StructField("layer",            StringType(),  True),
 ])

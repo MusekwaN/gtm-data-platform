@@ -11,6 +11,9 @@ from pyspark.sql.functions import (
     when, coalesce, lit
 )
 from pyspark.sql.types import TimestampType
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
+from streaming.schemas.lead_schema import BRONZE_LEAD_SCHEMA
 
 def create_spark_session() -> SparkSession:
     return (
@@ -18,7 +21,7 @@ def create_spark_session() -> SparkSession:
         .appName("GTM-Silver-Processing")
         .config(
             "spark.jars.packages",
-            "org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.0"
+            "org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0"
         )
         .config("spark.sql.streaming.checkpointLocation", "./checkpoints/silver")
         .config("spark.sql.shuffle.partitions", "4")
@@ -92,7 +95,6 @@ def clean_leads(df):
             "industry",
             "employee_count",
             "lead_status",
-            "ingested_at",
             "processed_at",
             "layer"
         )
@@ -102,15 +104,11 @@ def clean_leads(df):
 def process_silver(spark: SparkSession):
     """Read Bronze parquet files and write cleaned Silver output."""
 
-    # Read from Bronze layer (batch read of parquet files)
+    # Read from Bronze layer (streaming read of parquet files)
     bronze_df = (
         spark.readStream
         .format("parquet")
-        .schema(
-            spark.read
-            .parquet("./data/bronze/leads")
-            .schema
-        )
+        .schema(BRONZE_LEAD_SCHEMA)
         .option("path", "./data/bronze/leads")
         .load()
     )

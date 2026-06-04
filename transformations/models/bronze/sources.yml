@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw
+    database: GTM_DB
+    schema: RAW
+    tables:
+      - name: apollo_leads
+      - name: lead_scores

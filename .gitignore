@@ -31,4 +31,5 @@ monitoring/reports/
 
 # IDE
 .vscode/
-.idea/
+.idea/.env 
+*.env 

@@ -1,0 +1,61 @@
+# .github/workflows/dbt.yml
+name: dbt Daily Run
+
+on:
+  schedule:
+    - cron: '0 6 * * *'    # runs every day at 6am UTC
+  workflow_dispatch:         # allows manual trigger from GitHub UI
+
+jobs:
+  dbt-run:
+    name: Daily dbt Run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dbt
+        run: pip install dbt-snowflake
+
+      - name: Create dbt profiles
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml << EOF
+          transformations:
+            target: prod
+            outputs:
+              prod:
+                type: snowflake
+                account: "${{ secrets.SNOWFLAKE_ACCOUNT }}"
+                user: "${{ secrets.SNOWFLAKE_USER }}"
+                password: "${{ secrets.SNOWFLAKE_PASSWORD }}"
+                role: PUBLIC
+                database: GTM_DB
+                warehouse: GTM_WH
+                schema: SILVER
+                threads: 4
+          EOF
+
+      - name: Run dbt models
+        working-directory: transformations
+        run: dbt run
+
+      - name: Run dbt tests
+        working-directory: transformations
+        run: dbt test
+
+      - name: Generate dbt docs
+        working-directory: transformations
+        run: dbt docs generate
+
+      - name: Notify Slack on success
+        run: |
+          curl -X POST "${{ secrets.SLACK_WEBHOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            -d '{"text": "✅ Daily dbt run completed successfully!"}'

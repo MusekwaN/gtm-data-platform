@@ -218,18 +218,16 @@ jobs:
     steps:
       - name: Send success notification
         if: ${{ needs.pipeline-tests.result == 'success' }}
+        continue-on-error: true        # ← add this
         run: |
           curl -X POST "${{ secrets.SLACK_WEBHOOK_URL }}" \
             -H "Content-Type: application/json" \
-            -d '{
-              "text": "✅ GTM Platform CI/CD passed!\\nBranch: ${{ github.ref_name }}\\nCommit: ${{ github.sha }}\\nAll pipeline tests passed."
-            }'
+            -d '{"text": "✅ GTM Platform CI/CD passed!"}'
 
       - name: Send failure notification
         if: ${{ needs.pipeline-tests.result == 'failure' }}
+        continue-on-error: true        # ← add this
         run: |
           curl -X POST "${{ secrets.SLACK_WEBHOOK_URL }}" \
             -H "Content-Type: application/json" \
-            -d '{
-              "text": "❌ GTM Platform CI/CD FAILED!\\nBranch: ${{ github.ref_name }}\\nCommit: ${{ github.sha }}\\nCheck GitHub Actions for details."
-            }'
+            -d '{"text": "❌ GTM Platform CI/CD FAILED!"}'

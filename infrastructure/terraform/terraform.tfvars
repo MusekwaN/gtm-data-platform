@@ -1,0 +1,7 @@
+snowflake_organization = "BZPMUJQ"
+snowflake_account_name = "AG56460"
+snowflake_user         = "BLACKACE"
+snowflake_password     = "Databricks.python.12@"
+snowflake_role         = "PUBLIC"
+environment            = "dev"
+project_name           = "gtm-platform"

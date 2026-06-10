@@ -1,0 +1,179 @@
+[
+  {
+    "layer": "BRONZE",
+    "checked_at": "2026-06-09T20:16:34.702261+00:00",
+    "expectation": "expect_row_count_above",
+    "passed": true,
+    "row_count": 150,
+    "min_rows": 1,
+    "message": "PASS"
+  },
+  {
+    "layer": "BRONZE",
+    "checked_at": "2026-06-09T20:16:34.703346+00:00",
+    "expectation": "expect_column_no_nulls",
+    "column": "lead_id",
+    "passed": "True",
+    "null_count": 0,
+    "total_rows": 150,
+    "null_pct": 0.0,
+    "message": "PASS"
+  },
+  {
+    "layer": "BRONZE",
+    "checked_at": "2026-06-09T20:16:34.704352+00:00",
+    "expectation": "expect_column_no_nulls",
+    "column": "source",
+    "passed": "True",
+    "null_count": 0,
+    "total_rows": 150,
+    "null_pct": 0.0,
+    "message": "PASS"
+  },
+  {
+    "layer": "BRONZE",
+    "checked_at": "2026-06-09T20:16:34.705370+00:00",
+    "expectation": "expect_column_no_nulls",
+    "column": "ingested_at",
+    "passed": "True",
+    "null_count": 0,
+    "total_rows": 150,
+    "null_pct": 0.0,
+    "message": "PASS"
+  },
+  {
+    "layer": "SILVER",
+    "checked_at": "2026-06-09T20:16:37.143933+00:00",
+    "expectation": "expect_row_count_above",
+    "passed": true,
+    "row_count": 143,
+    "min_rows": 1,
+    "message": "PASS"
+  },
+  {
+    "layer": "SILVER",
+    "checked_at": "2026-06-09T20:16:37.144132+00:00",
+    "expectation": "expect_column_no_nulls",
+    "column": "lead_id",
+    "passed": "True",
+    "null_count": 0,
+    "total_rows": 143,
+    "null_pct": 0.0,
+    "message": "PASS"
+  },
+  {
+    "layer": "SILVER",
+    "checked_at": "2026-06-09T20:16:37.144318+00:00",
+    "expectation": "expect_column_no_nulls",
+    "column": "email",
+    "passed": "True",
+    "null_count": 0,
+    "total_rows": 143,
+    "null_pct": 0.0,
+    "message": "PASS"
+  },
+  {
+    "layer": "SILVER",
+    "checked_at": "2026-06-09T20:16:37.144424+00:00",
+    "expectation": "expect_column_unique",
+    "column": "email",
+    "passed": true,
+    "duplicate_count": 0,
+    "total_rows": 143,
+    "message": "PASS"
+  },
+  {
+    "layer": "SILVER",
+    "checked_at": "2026-06-09T20:16:37.144516+00:00",
+    "expectation": "expect_email_format",
+    "column": "email",
+    "passed": "True",
+    "invalid_count": 0,
+    "message": "PASS"
+  },
+  {
+    "layer": "SILVER",
+    "checked_at": "2026-06-09T20:16:37.144602+00:00",
+    "expectation": "expect_values_in_set",
+    "column": "source",
+    "passed": true,
+    "invalid_values": [],
+    "valid_values": [
+      "apollo",
+      "hubspot",
+      "salesforce",
+      "unknown"
+    ],
+    "message": "PASS"
+  },
+  {
+    "layer": "SILVER",
+    "checked_at": "2026-06-09T20:16:37.144704+00:00",
+    "expectation": "expect_no_future_dates",
+    "column": "ingested_at",
+    "passed": "True",
+    "future_count": 0,
+    "message": "PASS"
+  },
+  {
+    "layer": "GOLD",
+    "checked_at": "2026-06-09T20:16:37.153653+00:00",
+    "expectation": "expect_row_count_above",
+    "passed": true,
+    "row_count": 143,
+    "min_rows": 1,
+    "message": "PASS"
+  },
+  {
+    "layer": "GOLD",
+    "checked_at": "2026-06-09T20:16:37.153724+00:00",
+    "expectation": "expect_column_no_nulls",
+    "column": "lead_id",
+    "passed": "True",
+    "null_count": 0,
+    "total_rows": 143,
+    "null_pct": 0.0,
+    "message": "PASS"
+  },
+  {
+    "layer": "GOLD",
+    "checked_at": "2026-06-09T20:16:37.154583+00:00",
+    "expectation": "expect_column_no_nulls",
+    "column": "lead_score",
+    "passed": "True",
+    "null_count": 0,
+    "total_rows": 143,
+    "null_pct": 0.0,
+    "message": "PASS"
+  },
+  {
+    "layer": "GOLD",
+    "checked_at": "2026-06-09T20:16:37.154762+00:00",
+    "expectation": "expect_values_in_set",
+    "column": "intent_level",
+    "passed": true,
+    "invalid_values": [],
+    "valid_values": [
+      "hot",
+      "warm",
+      "cool",
+      "cold"
+    ],
+    "message": "PASS"
+  },
+  {
+    "layer": "GOLD",
+    "checked_at": "2026-06-09T20:16:37.155003+00:00",
+    "expectation": "expect_values_in_set",
+    "column": "recommended_action",
+    "passed": true,
+    "invalid_values": [],
+    "valid_values": [
+      "schedule_demo",
+      "send_case_study",
+      "add_to_nurture",
+      "enrich_data"
+    ],
+    "message": "PASS"
+  }
+]

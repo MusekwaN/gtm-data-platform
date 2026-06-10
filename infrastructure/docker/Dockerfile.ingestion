@@ -1,0 +1,21 @@
+# infrastructure/docker/Dockerfile.ingestion
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir \
+    kafka-python-ng \
+    requests \
+    python-dotenv \
+    pandas \
+    pyarrow \
+    snowflake-connector-python
+
+# Copy source code
+COPY ingestion/ ./ingestion/
+COPY .env .env
+
+# Default command
+CMD ["python", "ingestion/apollo/apollo_connector.py"]

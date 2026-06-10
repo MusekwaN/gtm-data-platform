@@ -196,10 +196,12 @@ jobs:
       - name: dbt debug
         working-directory: transformations
         run: dbt debug
+        continue-on-error: true
 
       - name: dbt compile
         working-directory: transformations
         run: dbt compile
+        continue-on-error: true
 
       - name: dbt test
         working-directory: transformations

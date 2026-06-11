@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ndodzo Musekwa — Data Engineer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --bg:      #05080d;
+    --bg2:     #090e15;
+    --bg3:     #0e1620;
+    --border:  #162030;
+    --accent:  #00c8ff;
+    --green:   #00e5a0;
+    --amber:   #f5a623;
+    --purple:  #9b6dff;
+    --red:     #ff6b6b;
+    --text:    #dce8f5;
+    --muted:   #4a6580;
+    --card:    #0a1018;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* grid bg */
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(rgba(0,200,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,200,255,.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events:none; z-index:0;
+  }
+
+  /* glow orbs */
+  .orb {
+    position:fixed; border-radius:50%;
+    filter:blur(140px); pointer-events:none; z-index:0; opacity:.1;
+  }
+  .orb1 { width:700px;height:700px; background:var(--accent); top:-300px;left:-200px; }
+  .orb2 { width:500px;height:500px; background:var(--purple); bottom:0;right:-150px; }
+
+  /* ── NAV ── */
+  nav {
+    position:fixed; top:0;left:0;right:0; z-index:100;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:.9rem 3rem;
+    background:rgba(5,8,13,.88); backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+  }
+  .logo {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.85rem; color:var(--accent); letter-spacing:.08em;
+  }
+  .logo span { color:var(--text); }
+  nav ul { display:flex; gap:2.5rem; list-style:none; }
+  nav a {
+    color:var(--muted); text-decoration:none;
+    font-size:.75rem; letter-spacing:.12em; text-transform:uppercase;
+    transition:color .2s;
+  }
+  nav a:hover { color:var(--accent); }
+
+  /* ── LAYOUT ── */
+  .wrap { position:relative; z-index:1; max-width:1080px; margin:0 auto; padding:0 2rem; }
+
+  /* ── HERO ── */
+  #hero {
+    position:relative; z-index:1;
+    min-height:100vh; display:flex; align-items:center;
+    padding:7rem 5vw 4rem;
+  }
+  .hero-inner { max-width:700px; }
+
+  .hero-eyebrow {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.7rem; color:var(--green);
+    letter-spacing:.25em; text-transform:uppercase;
+    display:flex; align-items:center; gap:.75rem;
+    margin-bottom:1.75rem;
+  }
+  .hero-eyebrow::before {
+    content:''; width:2.5rem; height:1px; background:var(--green);
+  }
+
+  h1 {
+    font-size:clamp(2.8rem,7vw,5.5rem);
+    font-weight:700; letter-spacing:-.03em; line-height:1;
+    margin-bottom:.4rem;
+  }
+  h1 .hi { color:var(--muted); font-weight:300; font-size:.55em; display:block; margin-bottom:.3rem; }
+  h1 .name { color:var(--text); }
+  h1 .accent-name { color:var(--accent); }
+
+  .hero-role {
+    font-size:clamp(1rem,2.5vw,1.4rem);
+    color:var(--muted); font-weight:300;
+    margin:1rem 0 1.75rem;
+    letter-spacing:.02em;
+  }
+
+  .hero-summary {
+    color:#7a9ab8; font-size:1rem;
+    line-height:1.85; max-width:540px;
+    margin-bottom:2.5rem;
+  }
+
+  /* stat row */
+  .stats {
+    display:flex; gap:2.5rem; flex-wrap:wrap;
+    margin-bottom:2.5rem;
+    padding:1.5rem;
+    background:var(--card);
+    border:1px solid var(--border);
+  }
+  .stat { display:flex; flex-direction:column; gap:.2rem; }
+  .stat-n {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:1.8rem; font-weight:700; color:var(--accent); line-height:1;
+  }
+  .stat-l { font-size:.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:.12em; }
+
+  .cta-row { display:flex; gap:1rem; flex-wrap:wrap; }
+
+  .btn {
+    padding:.75rem 1.75rem;
+    font-size:.8rem; font-weight:600; letter-spacing:.08em;
+    text-decoration:none; transition:all .2s;
+    font-family:'IBM Plex Sans',sans-serif;
+  }
+  .btn-solid {
+    background:var(--accent); color:#000;
+    clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));
+  }
+  .btn-solid:hover { background:#fff; transform:translateY(-2px); }
+  .btn-ghost {
+    border:1px solid var(--border); color:var(--text);
+  }
+  .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
+
+  /* ── SECTION ── */
+  section { padding:5rem 0; }
+  .eyebrow {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.65rem; color:var(--accent);
+    letter-spacing:.22em; text-transform:uppercase; margin-bottom:.6rem;
+  }
+  h2 {
+    font-size:clamp(1.6rem,3.5vw,2.4rem);
+    font-weight:700; letter-spacing:-.02em; line-height:1.1;
+    margin-bottom:.75rem;
+  }
+  .rule { width:2.5rem; height:2px; background:linear-gradient(90deg,var(--accent),transparent); }
+  .section-head { margin-bottom:2.5rem; }
+
+  /* ── PROJECT CARD ── */
+  .proj-card {
+    background:var(--card); border:1px solid var(--border);
+    padding:2.5rem; margin-bottom:1.5rem;
+    position:relative; overflow:hidden;
+    transition:border-color .3s, transform .3s;
+  }
+  .proj-card::before {
+    content:''; position:absolute; left:0;top:0;
+    width:3px; height:100%;
+    background:linear-gradient(180deg,var(--accent),var(--purple));
+  }
+  .proj-card:hover { border-color:rgba(0,200,255,.4); transform:translateX(4px); }
+
+  .proj-top {
+    display:flex; justify-content:space-between;
+    align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1.25rem;
+  }
+  .proj-title { font-size:1.25rem; font-weight:600; letter-spacing:-.01em; }
+  .badge {
+    font-family:'IBM Plex Mono',monospace; font-size:.6rem;
+    padding:.25rem .7rem; border:1px solid var(--green); color:var(--green);
+    letter-spacing:.1em; text-transform:uppercase;
+  }
+
+  .proj-desc { color:#7a9ab8; margin-bottom:1.5rem; line-height:1.75; font-size:.95rem; }
+
+  /* pipeline */
+  .pipe {
+    display:flex; flex-wrap:wrap; align-items:center;
+    gap:.3rem; margin:1.25rem 0;
+  }
+  .pn {
+    font-family:'IBM Plex Mono',monospace; font-size:.6rem;
+    padding:.3rem .65rem; background:var(--bg3); border:1px solid var(--border);
+    white-space:nowrap; letter-spacing:.04em;
+  }
+  .pn.a { border-color:var(--accent); color:var(--accent); }
+  .pn.g { border-color:var(--green); color:var(--green); }
+  .pn.p { border-color:var(--purple); color:#c4a6ff; }
+  .pn.o { border-color:var(--amber); color:var(--amber); }
+  .arr { color:var(--muted); font-size:.75rem; }
+
+  /* metrics */
+  .metrics {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr));
+    gap:.75rem; margin:1.25rem 0;
+  }
+  .mbox {
+    background:var(--bg3); border:1px solid var(--border);
+    padding:.9rem; text-align:center;
+  }
+  .mval {
+    font-family:'IBM Plex Mono',monospace;
+    font-size:1.3rem; font-weight:700; color:var(--accent); display:block;
+  }
+  .mlbl { font-size:.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; margin-top:.2rem; }
+
+  /* terminal */
+  .term {
+    background:#020508; border:1px solid var(--border);
+    padding:1.25rem; margin:1.25rem 0;
+  }
+  .term-bar { display:flex; gap:.35rem; margin-bottom:.9rem; }
+  .td { width:9px;height:9px;border-radius:50%; }
+  .td-r{background:#ff5f57;} .td-a{background:#febc2e;} .td-g{background:#28c840;}
+  .term pre {
+    font-family:'IBM Plex Mono',monospace; font-size:.7rem;
+    color:#6a8aaa; line-height:1.9; overflow-x:auto;
+  }
+  .tg{color:var(--green);} .ta{color:var(--accent);}
+  .to{color:var(--amber);} .tm{color:var(--muted);}
+
+  /* ci badges */
+  .ci { display:flex; gap:.5rem; flex-wrap:wrap; margin:.75rem 0; }
+  .cib {
+    font-family:'IBM Plex Mono',monospace; font-size:.6rem;
+    padding:.25rem .65rem; letter-spacing:.05em;
+    display:flex; align-items:center; gap:.35rem;
+  }
+  .cib.pass { background:rgba(0,229,160,.06); border:1px solid var(--green); color:var(--green); }
+  .cib.info { background:rgba(0,200,255,.06); border:1px solid var(--accent); color:var(--accent); }
+
+  /* tags */
+  .tags { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:1.25rem; }
+  .tag {
+    font-family:'IBM Plex Mono',monospace; font-size:.58rem;
+    padding:.25rem .55rem;
+    background:rgba(0,200,255,.04); border:1px solid rgba(0,200,255,.15); color:var(--accent);
+    letter-spacing:.04em;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:1.25rem;
+  }
+  .skill-cat {
+    background:var(--card); border:1px solid var(--border); padding:1.5rem;
+    transition:border-color .3s;
+  }
+  .skill-cat:hover { border-color:rgba(155,109,255,.4); }
+  .scat-title {
+    font-family:'IBM Plex Mono',monospace; font-size:.62rem;
+    color:var(--purple); letter-spacing:.15em; text-transform:uppercase;
+    margin-bottom:.9rem; padding-bottom:.65rem; border-bottom:1px solid var(--border);
+  }
+  .skill-list { list-style:none; display:flex; flex-direction:column; gap:.45rem; }
+  .skill-list li {
+    font-size:.82rem; color:#7a9ab8;
+    display:flex; align-items:flex-start; gap:.45rem;
+  }
+  .skill-list li::before { content:'▸'; color:var(--accent); font-size:.65rem; margin-top:.15rem; flex-shrink:0; }
+
+  /* ── EXPERIENCE TIMELINE ── */
+  .timeline { position:relative; padding-left:1.75rem; }
+  .timeline::before {
+    content:''; position:absolute; left:0;top:0;bottom:0;
+    width:1px; background:linear-gradient(180deg,var(--accent),transparent);
+  }
+  .tl-item {
+    position:relative; margin-bottom:2.5rem; padding-bottom:2.5rem;
+    border-bottom:1px solid var(--border);
+  }
+  .tl-item:last-child { border-bottom:none; margin-bottom:0; }
+  .tl-dot {
+    position:absolute; left:-2.1rem; top:.45rem;
+    width:.55rem; height:.55rem; background:var(--accent); border-radius:50%;
+  }
+  .tl-date {
+    font-family:'IBM Plex Mono',monospace; font-size:.65rem;
+    color:var(--accent); letter-spacing:.1em; margin-bottom:.4rem;
+  }
+  .tl-role { font-size:1.05rem; font-weight:600; margin-bottom:.2rem; }
+  .tl-company { font-size:.82rem; color:var(--muted); margin-bottom:.9rem; }
+  .tl-section-title {
+    font-family:'IBM Plex Mono',monospace; font-size:.62rem;
+    color:var(--purple); letter-spacing:.1em; text-transform:uppercase;
+    margin:.9rem 0 .4rem;
+  }
+  .tl-points { list-style:none; display:flex; flex-direction:column; gap:.4rem; }
+  .tl-points li {
+    font-size:.82rem; color:#7a9ab8;
+    display:flex; gap:.5rem;
+  }
+  .tl-points li::before {
+    content:'→'; color:var(--accent); flex-shrink:0;
+    font-size:.7rem; margin-top:.15rem;
+  }
+
+  /* ── CERTS ── */
+  .certs-row { display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem; }
+  .cert-card {
+    background:var(--card); border:1px solid var(--border);
+    padding:1rem 1.5rem;
+    display:flex; align-items:center; gap:.75rem;
+    transition:border-color .3s;
+  }
+  .cert-card:hover { border-color:var(--amber); }
+  .cert-icon { font-size:1.4rem; }
+  .cert-name { font-size:.82rem; font-weight:500; }
+  .cert-body { font-size:.7rem; color:var(--muted); }
+
+  /* ── CONTACT ── */
+  .contact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-top:1.5rem; }
+  .cc {
+    background:var(--card); border:1px solid var(--border); padding:1.4rem;
+    text-decoration:none; color:var(--text);
+    display:flex; flex-direction:column; gap:.4rem;
+    transition:all .3s;
+  }
+  .cc:hover { border-color:var(--accent); transform:translateY(-4px); }
+  .cc-icon { font-size:1.3rem; }
+  .cc-label { font-family:'IBM Plex Mono',monospace; font-size:.62rem; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; }
+  .cc-val { font-size:.85rem; color:var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    position:relative; z-index:1;
+    border-top:1px solid var(--border);
+    padding:1.75rem 5vw;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
+  }
+  footer p { font-family:'IBM Plex Mono',monospace; font-size:.65rem; color:var(--muted); }
+
+  @media(max-width:640px){
+    nav { padding:.9rem 1.25rem; }
+    nav ul { display:none; }
+    #hero { padding:6rem 1.25rem 3rem; }
+    .wrap { padding:0 1.25rem; }
+    .stats { gap:1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">ndodzo<span>.dev</span></div>
+  <ul>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Data Engineer · Pretoria, South Africa</div>
+    <h1>
+      <span class="hi">Hi, I'm</span>
+      <span class="name">Ndodzo </span><span class="accent-name">Musekwa</span>
+    </h1>
+    <p class="hero-role">
+      Data Engineer · Real-Time Pipelines · AI-Powered Analytics
+    </p>
+    <p class="hero-summary">
+      Data Engineer with 3+ years of enterprise experience at LTIMindtree, 
+      specialising in SQL transformation, Azure cloud platforms and Databricks. 
+      I design and build end-to-end data systems — from Kafka streaming to 
+      AI-powered lead scoring — for modern data-driven organisations.
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-n">3+</span>
+        <span class="stat-l">Years experience</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">10</span>
+        <span class="stat-l">Platform phases</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">150+</span>
+        <span class="stat-l">Leads processed</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">100%</span>
+        <span class="stat-l">CI/CD pass rate</span>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a href="#projects" class="btn btn-solid">View Projects</a>
+      <a href="https://github.com/MusekwaN" target="_blank" class="btn btn-ghost">GitHub →</a>
+      <a href="https://www.linkedin.com/in/ndodzo-musekwa-a00b53181/" target="_blank" class="btn btn-ghost">LinkedIn →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Featured Work</div>
+      <h2>Projects</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <h3 class="proj-title">Real-Time GTM Data Engineering Platform</h3>
+        <span class="badge">✓ Production Ready</span>
+      </div>
+
+      <p class="proj-desc">
+        A production-grade, end-to-end B2B SaaS data platform built from scratch across 10 
+        engineering phases. Ingests leads from Apollo.io and HubSpot via Kafka, processes them 
+        through a medallion lakehouse (Bronze → Silver → Gold), applies AI agents for lead 
+        scoring and intent detection, resolves cross-system identities, and triggers automated 
+        Slack alerts via Reverse ETL — all deployed with Terraform and tested via GitHub Actions CI/CD.
+      </p>
+
+      <div class="pipe">
+        <span class="pn a">Apollo.io API</span><span class="arr">→</span>
+        <span class="pn a">HubSpot API</span><span class="arr">→</span>
+        <span class="pn g">Kafka</span><span class="arr">→</span>
+        <span class="pn">Bronze</span><span class="arr">→</span>
+        <span class="pn">Silver</span><span class="arr">→</span>
+        <span class="pn o">Gold</span><span class="arr">→</span>
+        <span class="pn p">AI Agents</span><span class="arr">→</span>
+        <span class="pn g">Slack / CRM</span>
+      </div>
+
+      <div class="metrics">
+        <div class="mbox"><span class="mval">150</span><span class="mlbl">Bronze rows</span></div>
+        <div class="mbox"><span class="mval">143</span><span class="mlbl">Silver rows</span></div>
+        <div class="mbox"><span class="mval">96</span><span class="mlbl">Unified IDs</span></div>
+        <div class="mbox"><span class="mval">77</span><span class="mlbl">Hot leads</span></div>
+        <div class="mbox"><span class="mval">76.6</span><span class="mlbl">Avg score</span></div>
+        <div class="mbox"><span class="mval">1m32s</span><span class="mlbl">CI runtime</span></div>
+      </div>
+
+      <div class="term">
+        <div class="term-bar">
+          <div class="td td-r"></div><div class="td td-a"></div><div class="td td-g"></div>
+        </div>
+        <pre>
+<span class="tm">$</span> <span class="ta">python</span> monitoring/pipeline_health.py
+
+<span class="tg">✅ PLATFORM STATUS: HEALTHY</span>
+
+  Bronze/Leads      <span class="tg">OK</span>   150 rows   45 KB
+  Silver/Leads      <span class="tg">OK</span>   143 rows   38 KB
+  Gold/LeadScores   <span class="tg">OK</span>   143 rows   42 KB
+  Unified/Leads     <span class="tg">OK</span>    96 rows   35 KB
+  AI/Insights       <span class="tg">OK</span>    26 rows   12 KB
+
+<span class="to">🔥 hot    77  (53.8%)  ████████████████████████</span>
+<span class="ta">☀️  warm   50  (35.0%)  █████████████████</span>
+   cool   12   (8.4%)  ██████
+   cold    4   (2.8%)  ██
+
+  Avg Score: 76.6   Max: 100   Min: 25
+        </pre>
+      </div>
+
+      <div class="ci">
+        <span class="cib pass">✓ Code Quality 19s</span>
+        <span class="cib pass">✓ Pipeline Tests 21s</span>
+        <span class="cib pass">✓ dbt Tests 34s</span>
+        <span class="cib pass">✓ Notify Slack 3s</span>
+        <span class="cib info">GitHub Actions · All checks passed</span>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Apache Kafka</span>
+        <span class="tag">Snowflake</span>
+        <span class="tag">dbt</span>
+        <span class="tag">Python</span>
+        <span class="tag">PySpark</span>
+        <span class="tag">LangGraph</span>
+        <span class="tag">OpenAI</span>
+        <span class="tag">Terraform</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Grafana</span>
+        <span class="tag">Prometheus</span>
+        <span class="tag">n8n</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">Great Expectations</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="proj-card">
+      <div class="proj-top">
+        <h3 class="proj-title">NGO Data Transformation & Analytics Platform</h3>
+        <span class="badge">✓ Enterprise Delivered</span>
+      </div>
+      <p class="proj-desc">
+        Led end-to-end data transformation initiative for an NGO client using MS SQL Server, 
+        SSIS and Python. Delivered complete data profiling, source-to-target mapping, 
+        business rule implementation, reconciliation controls and Power BI reporting — 
+        a fully documented, production-grade analytical solution for stakeholder decision-making.
+      </p>
+      <div class="tags">
+        <span class="tag">MS SQL Server</span>
+        <span class="tag">SSIS</span>
+        <span class="tag">Python</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">T-SQL</span>
+        <span class="tag">Data Profiling</span>
+        <span class="tag">Source-to-Target Mapping</span>
+        <span class="tag">Reconciliation</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Expertise</div>
+      <h2>Technical Skills</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <div class="scat-title">SQL & Data Transformation</div>
+        <ul class="skill-list">
+          <li>T-SQL, Stored Procedures, Views, Functions</li>
+          <li>Complex Query Optimisation</li>
+          <li>MS SQL Server, PostgreSQL, Snowflake</li>
+          <li>Dimensional Modelling (Kimball)</li>
+          <li>Data Cleansing & Normalisation</li>
+        </ul>
+      </div>
+
+      <div class="skill-cat">
+        <div class="scat-title">Streaming & Ingestion</div>
+        <ul class="skill-list">
+          <li>Apache Kafka — topics, producers, consumers</li>
+          <li>CDC Pipelines</li>
+          <li>REST API connectors (Apollo, HubSpot)</li>
+          <li>Azure Data Factory orchestration</li>
+          <li>Incremental loads & data staging</li>
+        </ul>
+      </div>
+
+      <div class="skill-cat">
+        <div class="scat-title">Spark & Cloud Platforms</div>
+        <ul class="skill-list">
+          <li>PySpark & Databricks Notebooks</li>
+          <li>Delta Lake — Bronze/Silver/Gold</li>
+          <li>Azure Synapse Analytics & MS Fabric</li>
+          <li>Azure DevOps & CI/CD pipelines</li>
+          <li>Snowflake warehouse management</li>
+        </ul>
+      </div>
+
+      <div class="skill-cat">
+        <div class="scat-title">dbt & Data Modelling</div>
+        <ul class="skill-list">
+          <li>dbt models — bronze, silver, gold layers</li>
+          <li>dbt tests, documentation & lineage</li>
+          <li>Medallion lakehouse architecture</li>
+          <li>Source-to-target mapping</li>
+          <li>Data profiling & reconciliation</li>
+        </ul>
+      </div>
+
+      <div class="skill-cat">
+        <div class="scat-title">AI & Automation</div>
+        <ul class="skill-list">
+          <li>LangGraph AI agents (enrichment, intent)</li>
+          <li>OpenAI API integration</li>
+          <li>Identity resolution engine</li>
+          <li>n8n workflow automation</li>
+          <li>Reverse ETL to CRM & Slack</li>
+        </ul>
+      </div>
+
+      <div class="skill-cat">
+        <div class="scat-title">Observability & DevOps</div>
+        <ul class="skill-list">
+          <li>Grafana dashboards & Prometheus metrics</li>
+          <li>Great Expectations quality checks</li>
+          <li>GitHub Actions CI/CD pipelines</li>
+          <li>Terraform infrastructure as code</li>
+          <li>Docker containerisation</li>
+        </ul>
+      </div>
+
+      <div class="skill-cat">
+        <div class="scat-title">BI & Visualisation</div>
+        <ul class="skill-list">
+          <li>Power BI — Advanced DAX measures</li>
+          <li>SSRS reporting</li>
+          <li>Self-service dashboards</li>
+          <li>Governed dataset publishing</li>
+          <li>Stakeholder reporting</li>
+        </ul>
+      </div>
+
+      <div class="skill-cat">
+        <div class="scat-title">Governance & Compliance</div>
+        <ul class="skill-list">
+          <li>Data lineage & metadata management</li>
+          <li>OpenMetadata</li>
+          <li>POPIA compliance</li>
+          <li>Pipeline documentation standards</li>
+          <li>Data quality frameworks</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Background</div>
+      <h2>Experience</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="timeline">
+
+      <!-- GTM Project -->
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2025 — PRESENT</div>
+        <div class="tl-role">Data Engineer (Portfolio Project)</div>
+        <div class="tl-company">Real-Time GTM Data Platform · Self-Built</div>
+        <div class="tl-section-title">Platform Engineering</div>
+        <ul class="tl-points">
+          <li>Built a production-grade GTM data platform from scratch across 10 engineering phases — streaming ingestion, medallion lakehouse, AI agents, observability and CI/CD</li>
+          <li>Designed Kafka-based event streaming pipeline processing 150+ leads with full Bronze/Silver/Gold medallion architecture</li>
+          <li>Built AI lead scoring agents using LangGraph and OpenAI — enrichment, intent detection and personalised outreach generation</li>
+          <li>Implemented identity resolution engine using exact, domain and fuzzy matching — reducing duplicates by 33% across data sources</li>
+          <li>Deployed full observability stack with Grafana dashboards, Prometheus metrics and Great Expectations quality checks</li>
+          <li>Provisioned Snowflake infrastructure via Terraform and automated all testing and deployment with GitHub Actions CI/CD — achieving 100% pipeline pass rate in 1m 32s</li>
+        </ul>
+      </div>
+
+      <!-- LTIMindtree DE -->
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">SEP 2023 — JUNE 2025</div>
+        <div class="tl-role">Data Engineer / Technical Information Analyst</div>
+        <div class="tl-company">LTIMindtree · Pretoria</div>
+
+        <div class="tl-section-title">SQL Development & Data Transformation</div>
+        <ul class="tl-points">
+          <li>Wrote complex T-SQL queries, stored procedures, views and functions to extract, transform and load data across enterprise systems — delivering analysis-ready datasets for downstream BI and operational reporting</li>
+          <li>Developed and maintained data transformation logic within ETL pipelines (SSIS, Azure Data Factory), implementing business rules, cleansing routines and normalisation across the data platform</li>
+          <li>Optimised underperforming SQL queries and SSIS packages through execution plan analysis, indexing strategies and query refactoring — achieving measurable improvements in processing speed</li>
+        </ul>
+
+        <div class="tl-section-title">Data Profiling & Mapping</div>
+        <ul class="tl-points">
+          <li>Conducted systematic data profiling across source systems to assess completeness, accuracy, consistency and anomalies — producing reports that informed data quality improvement initiatives</li>
+          <li>Designed detailed source-to-target data mapping documents capturing field-level transformation rules, data types and business logic</li>
+          <li>Implemented source-to-target reconciliation checks at each pipeline stage, validating row counts, aggregates and key metrics to ensure data integrity end-to-end</li>
+        </ul>
+
+        <div class="tl-section-title">Spark, Databricks & Cloud</div>
+        <ul class="tl-points">
+          <li>Applied Databricks and Delta Lake principles for cloud data transformation workloads using PySpark notebooks and Bronze/Silver/Gold layered architecture</li>
+          <li>Migrated on-premises SSIS and SQL Server workflows to Azure Synapse Analytics and MS Fabric, ensuring scalability and cost efficiency</li>
+          <li>Utilised Azure Data Factory for pipeline orchestration across cloud data flows integrating structured and semi-structured sources</li>
+        </ul>
+
+        <div class="tl-section-title">BI Reporting & Collaboration</div>
+        <ul class="tl-points">
+          <li>Developed Power BI dashboards with advanced DAX measures, publishing governed datasets enabling business stakeholders to self-serve insights</li>
+          <li>Collaborated with Data Architects, Modellers and Business Analysts in Agile/Scrum ceremonies to align solutions with enterprise data standards</li>
+          <li>Mentored junior team members on SQL best practices, data profiling and pipeline design</li>
+        </ul>
+      </div>
+
+      <!-- LTIMindtree Intern -->
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">MAR 2023 — AUG 2023</div>
+        <div class="tl-role">Software Engineer Intern</div>
+        <div class="tl-company">LTIMindtree · Pretoria</div>
+        <ul class="tl-points">
+          <li>Supported full-stack integration of front-end and back-end systems within Agile delivery teams</li>
+          <li>Participated in sprint planning and daily stand-ups, contributing to iterative software delivery</li>
+          <li>Presented technical progress updates to stakeholders, developing skills in communicating technical outputs to business audiences</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Education & Certs -->
+    <div style="margin-top:3rem;">
+      <div class="section-head">
+        <div class="eyebrow">Education & Certifications</div>
+        <h2>Qualifications</h2>
+        <div class="rule"></div>
+      </div>
+
+      <div class="timeline" style="margin-bottom:2rem;">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2021</div>
+          <div class="tl-role">Bachelor of Information Technology (Business Systems)</div>
+          <div class="tl-company">IIE Rosebank College</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2022</div>
+          <div class="tl-role">Computer Networking</div>
+          <div class="tl-company">University of South Africa (UNISA)</div>
+        </div>
+      </div>
+
+      <div class="certs-row">
+        <div class="cert-card">
+          <span class="cert-icon">🏆</span>
+          <div>
+            <div class="cert-name">Azure Data Fundamentals</div>
+            <div class="cert-body">Microsoft Certified · DP-900</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <span class="cert-icon">🏆</span>
+          <div>
+            <div class="cert-name">Denodo Platform 9.0</div>
+            <div class="cert-body">Certified Architect Associate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Contact</h2>
+      <div class="rule"></div>
+    </div>
+    <p style="color:#7a9ab8; max-width:480px; line-height:1.85; font-size:.95rem;">
+      Open to Data Engineer, Analytics Engineer, AI Data Engineer 
+      and Founding Data Engineer roles. Based in Pretoria, South Africa — 
+      available for remote and hybrid opportunities.
+    </p>
+    <div class="contact-grid">
+      <a href="mailto:ndodzo1217@gmail.com" class="cc">
+        <span class="cc-icon">✉</span>
+        <span class="cc-label">Email</span>
+        <span class="cc-val">ndodzo1217@gmail.com</span>
+      </a>
+      <a href="https://www.linkedin.com/in/ndodzo-musekwa-a00b53181/" target="_blank" class="cc">
+        <span class="cc-icon">◈</span>
+        <span class="cc-label">LinkedIn</span>
+        <span class="cc-val">ndodzo-musekwa</span>
+      </a>
+      <a href="https://github.com/MusekwaN" target="_blank" class="cc">
+        <span class="cc-icon">⌥</span>
+        <span class="cc-label">GitHub</span>
+        <span class="cc-val">github.com/MusekwaN</span>
+      </a>
+      <a href="tel:+270790763514" class="cc">
+        <span class="cc-icon">◉</span>
+        <span class="cc-label">Phone</span>
+        <span class="cc-val">+27 079 076 3514</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Ndodzo Musekwa — Data Engineer · Pretoria, South Africa</p>
+  <p>Kafka · Snowflake · dbt · Azure · Databricks · LangGraph · Terraform</p>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.style.opacity='1';
+        e.target.style.transform='translateY(0)';
+      }
+    });
+  }, {threshold:.08});
+
+  document.querySelectorAll('.proj-card,.skill-cat,.tl-item,.cert-card,.cc').forEach(el=>{
+    el.style.opacity='0';
+    el.style.transform='translateY(18px)';
+    el.style.transition='opacity .5s ease, transform .5s ease';
+    io.observe(el);
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t) window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-75,behavior:'smooth'});
+    });
+  });
+</script>
+</body>
+</html>
